@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">mobilesoftware_project</string>
+    <string name="app_name">mobilesoftware_project</string>     <!-- 나중에 이름 짓자 -->
+
+    <!-- pageOne 관련 String -->
+    <string name="PageOneTitle">"시작하기"</string>
+    <string name="AddTrip">여행 계획 추가</string>
+    <string name="EmptyView">데이터가 없습니다.</string>
+
+    <!-- pageThree 관련 String -->
+    <string name="PageThreeTitle">"여행 체크리스트"</string>
+    <string name="d_open">Opened</string>
+    <string name="d_close">Close</string>
+
 </resources>

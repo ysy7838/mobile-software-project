@@ -5,7 +5,7 @@
         <item name="colorControlHighlight">@color/clickBlue</item>
     </style>
 
-    <style name="Toolbar" parent="Theme.AppCompat.Light.DarkActionBar">          <!-- 툴바 스타일 -->
+    <style name="Toolbar" parent="Theme.AppCompat.Light.NoActionBar">   <!-- 툴바 스타일 -->
         <item name="android:background">@color/mainBlue</item>
         <item name="android:titleTextColor">@color/white</item>
         <item name="android:textSize">20sp</item>

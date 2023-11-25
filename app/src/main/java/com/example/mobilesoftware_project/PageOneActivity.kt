@@ -3,13 +3,13 @@ package com.example.mobilesoftware_project
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mobilesoftware_project.databinding.ActivityMainBinding
+import com.example.mobilesoftware_project.databinding.PageOneMainBinding
 
 class PageOneActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {        // 액티비티 시작
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val binding = ActivityMainBinding.inflate(layoutInflater)   // 왜 mainbinding이지?
+        setContentView(R.layout.page_one_main)
+        val binding = PageOneMainBinding.inflate(layoutInflater)   // 왜 mainbinding이지?
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)     // toolbar 기본 타이틀 안 보이게
