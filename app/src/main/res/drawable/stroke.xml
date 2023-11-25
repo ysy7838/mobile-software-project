@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    TripList 구분 용도로 쓰고 싶음
+    drawable이랑 value의 style 여러 개 적용하는 방법에 대해서 알아봐야 함
+-->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <stroke android:width="1dp" android:color="#979797"/>
+        </shape>
+    </item>
+</selector>
