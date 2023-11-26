@@ -1,5 +1,6 @@
 package com.example.mobilesoftware_project
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +33,11 @@ class PageOneActivity : AppCompatActivity() {
         )
 
         binding.TripListRecycler.layoutManager = LinearLayoutManager(this)
-        binding.TripListRecycler.adapter = PageOneAdapter(triplistempty)
+        binding.TripListRecycler.adapter = PageOneAdapter(triplist)
+
+        binding.fabAddTrip.setOnClickListener{
+            val intent = Intent(this, PageThreeActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
