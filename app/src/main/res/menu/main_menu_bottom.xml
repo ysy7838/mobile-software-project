@@ -3,18 +3,22 @@
 
     <item
         android:id="@+id/bottomMenu_checklist"
+        android:icon="@drawable/check"
         android:title="체크리스트" />
 
     <item
         android:id="@+id/bottomMenu_schedule"
+        android:icon="@drawable/schedule"
         android:title="일정 기록" />
 
     <item
         android:id="@+id/bottomMenu_weather"
+        android:icon="@drawable/sun"
         android:title="날씨" />
 
     <item
         android:id="@+id/bottomMenu_exchange_rate"
+        android:icon="@drawable/chart"
         android:title="환율 계산기" />
 
 </menu>
