@@ -33,7 +33,6 @@
 
     <!-- 여기에 하단 메뉴바 추가 -->
 
-    <!-- 참고할 코드, 수정할 예정
     <FrameLayout
         android:id="@+id/menu_frame_layout"
         android:layout_width="match_parent"
@@ -45,11 +44,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:itemIconTint="@drawable/menu_item_color"
-        app:itemTextColor="@drawable/menu_item_color"
+        app:itemIconTint="@drawable/menu_selector_color"
+        app:itemTextColor="@drawable/menu_selector_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/main_menu_bottom"/>
-        -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
