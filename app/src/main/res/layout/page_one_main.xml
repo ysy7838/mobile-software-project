@@ -62,13 +62,12 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="20dp"
         android:contentDescription="@string/AddTrip"
-        android:src="@drawable/plus"
 
-        app:borderWidth="0dp"
+        android:src="@drawable/plus"
         app:backgroundTint="@color/mainBlue"
-        app:tint ="@color/white"
+        app:borderWidth="0dp"
         app:fabSize="normal"
         app:rippleColor="@color/clickBlue"
-        />
+        app:tint="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
