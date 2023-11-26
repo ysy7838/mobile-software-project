@@ -12,8 +12,8 @@ import com.example.mobilesoftware_project.databinding.TripRecyclerviewEmptyBindi
 로그는 나중에 지울 것
  */
 
-private const val ITEM = 1          // 데이터가 있을 때 viewType 상수로 선언
-private const val EMPTY = 2         // 데이터가 없을 떄 viewType 상수로 선언
+private const val EMPTY = 1         // 데이터가 없을 떄 viewType 상수로 선언
+private const val ITEM = 2          // 데이터가 있을 때 viewType 상수로 선언
 
 //리사이클러 뷰에 아이템이 없을 경우
 class PageOneEmptyHolder(val binding: TripRecyclerviewEmptyBinding) :
@@ -34,9 +34,9 @@ class PageOneAdapter(val tripList: ArrayList<Trip>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int {                              // 아이템이 몇 개인지 반환하는 함수
-        return if (tripList.size == 0) 1 else tripList.size + 1     // 0이면 종료되기 때문에 +1해서 반환
+        return if (tripList.size == 0) EMPTY else tripList.size     // 0이면 종료되기 때문에 +1해서 반환
     }
-    override fun getItemViewType(position: Int): Int {      // 아이템 개수에 따라서 viewType 반환
+    override fun getItemViewType(position: Int): Int {              // 아이템 개수에 따라서 viewType 반환
         Log.d("emptyCheck", "$EMPTY")
         return if (tripList.size != 0) ITEM
         else EMPTY
