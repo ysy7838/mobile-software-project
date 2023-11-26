@@ -18,7 +18,8 @@ class PageThreeActivity : AppCompatActivity() {
         val binding = PageThreeMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
-
+        supportActionBar?.setDisplayShowTitleEnabled(false)     // toolbar 기본 타이틀 안 보이게
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         /*
         실습 시간에 진행했던 코드 활용해서 넣기
          */
