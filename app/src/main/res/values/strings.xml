@@ -4,7 +4,7 @@
     <!-- pageOne 관련 String -->
     <string name="PageOneTitle">"시작하기"</string>
     <string name="AddTrip">여행 계획 추가</string>
-    <string name="EmptyView">데이터가 없습니다.</string>
+    <string name="EmptyView">여행 계획이 없습니다.</string>
 
     <!-- pageThree 관련 String -->
     <string name="PageThreeTitle">"여행 체크리스트"</string>
