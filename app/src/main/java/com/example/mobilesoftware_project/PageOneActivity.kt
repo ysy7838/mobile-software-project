@@ -36,7 +36,7 @@ class PageOneActivity : AppCompatActivity() {
         binding.TripListRecycler.adapter = PageOneAdapter(triplist)
 
         binding.fabAddTrip.setOnClickListener{
-            val intent = Intent(this, PageThreeActivity::class.java)
+            val intent = Intent(this, PageThreetoSixActivity::class.java)
             startActivity(intent)
         }
     }
