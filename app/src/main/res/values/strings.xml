@@ -8,7 +8,5 @@
 
     <!-- pageThree 관련 String -->
     <string name="PageThreeTitle">"여행 체크리스트"</string>
-    <string name="d_open">Opened</string>
-    <string name="d_close">Close</string>
 
 </resources>
