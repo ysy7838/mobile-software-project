@@ -7,6 +7,10 @@
     <string name="EmptyView">여행 계획이 없습니다.</string>
 
     <!-- pageThree 관련 String -->
-    <string name="PageThreeTitle">"여행 체크리스트"</string>
+    <string name="CheckPage">"여행 체크리스트"</string>
+    <string name="SchedulePage">"여행 계획"</string>
+    <string name="WeatherPage">"날씨"</string>
+    <string name="ExchangePage">"환율 계산기"</string>
+    <string name="Error">"오류가 발생하였습니다."</string>
 
 </resources>

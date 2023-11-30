@@ -27,7 +27,6 @@ class PageThreetoSixActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)     // toolbar 기본 타이틀 안 보이게
         supportActionBar?.setDisplayHomeAsUpEnabled(true)       // 뒤로 가기 버튼을 만듦
 
-
         val fragments: List<Fragment>                           // 프래그먼트를 리스트로 만듦
         = listOf(FragmentCheck(), FragmentSchedule(), FragmentWeather(), FragmentExchangeRate())
 
@@ -35,36 +34,35 @@ class PageThreetoSixActivity : AppCompatActivity() {
         for (i: Int in 0..3) {                                   // 각각의 프래그먼트를 추가
             transaction.add(R.id.menu_frame_layout, fragments[i])
         }
-        transaction.commit()                                            // 적용
-
-
+        transaction.commit()
+        // 적용
         binding.menuBottomNavigation.run {          // 아래 메뉴를 선택했을 때 실행
             setOnItemSelectedListener {
                 val trans = supportFragmentManager.beginTransaction()   // commit 한 번 하면 다시 선언해줘야 함
                 var choice = 0                                          // 선택에 따라 달라지는 변수 선언
                 when (it.itemId) {
                     R.id.bottomMenu_checklist -> {                      // 여행 체크리스트를 선택했을 때
-                        binding.ToolbarTitle.text = "여행 체크리스트"     // 타이틀도 바꿈 -> 이것도 프래그먼트에 추가하고 싶으면 그렇게 수정할 것 (회의해야 함)
+                        binding.ToolbarTitle.text = getString(R.string.CheckPage)      // 타이틀도 바꿈 -> 이것도 프래그먼트에 추가하고 싶으면 그렇게 수정할 것 (회의해야 함)
                         choice = CHECK                                  // 값을 CHECK로 바꿈
                         showAndHide(choice, fragments, trans)           // 선택된 프래그먼트는 show, 아닌 것은 hide 하고 commit 하는 함수
                     }
                     R.id.bottomMenu_schedule -> {                       // 스케줄을 선택했을 때
-                        binding.ToolbarTitle.text = "이름을 설정해주세요."
+                        binding.ToolbarTitle.text = getString(R.string.SchedulePage)
                         choice = SCHEDULE
                         showAndHide(choice, fragments, trans)
                     }
                     R.id.bottomMenu_weather -> {                        // 날씨를 선택했을 때
-                        binding.ToolbarTitle.text = "날씨"
+                        binding.ToolbarTitle.text = getString(R.string.WeatherPage)
                         choice = WEATHER
                         showAndHide(choice, fragments, trans)
                     }
                     R.id.bottomMenu_exchange_rate -> {                  // 환율 계산기를 선택했을 때
-                        binding.ToolbarTitle.text = "환율 계산기"
+                        binding.ToolbarTitle.text = getString(R.string.ExchangePage)
                         choice = EXCHANGE
                         showAndHide(choice, fragments, trans)
                     }
                     else -> {                                           // 그 외의 경우가 발생하면
-                        Log.d("error", "오류가 발생하였습니다.")
+                        Log.d("error", "@string/Error")
                     }
                 }
                 true                                // return type이 boolean이라 사용
@@ -78,6 +76,7 @@ class PageThreetoSixActivity : AppCompatActivity() {
         inflater.inflate(R.menu.menu_main_top, menu)                    // menu/more_menu_top.xml의 내용을 표시
         return super.onCreateOptionsMenu(menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {       // 툴바에 있는 게 선택 되었을 때
         when(item.itemId) {                         // 뒤로가기 버튼이 선택되었을 때
             android.R.id.home -> {                  // 여기에서 지금까지 한 거 저장하고 finish 해야 함
@@ -108,5 +107,4 @@ class PageThreetoSixActivity : AppCompatActivity() {
         }
         trans.commit()
     }
-
 }
