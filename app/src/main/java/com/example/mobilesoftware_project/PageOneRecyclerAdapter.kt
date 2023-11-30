@@ -1,8 +1,10 @@
 package com.example.mobilesoftware_project
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobilesoftware_project.databinding.TripRecyclerviewBinding
 import com.example.mobilesoftware_project.databinding.TripRecyclerviewEmptyBinding
@@ -24,7 +26,8 @@ class PageOneViewHolder(val binding: TripRecyclerviewBinding) :
     RecyclerView.ViewHolder(binding.root) {
     init {
         itemView.setOnClickListener {
-            Log.d("click", "클릭되었음.")            // 현재는 클릭했을 때 로그가 뜨게 만들어 놨음
+            val intent = Intent(itemView.context, PageThreetoSixActivity::class.java)       // 목록이랑 연결
+            ContextCompat.startActivity(itemView.context, intent, null)             // 참고: 참고: https://kumgo1d.tistory.com/44
         }
     }
 }
