@@ -9,7 +9,16 @@
         <item name="android:background">@color/mainBlue</item>
         <item name="android:titleTextColor">@color/white</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Actionbar</item>
+        <item name="android:actionOverflowButtonStyle">@style/Toolbar.OverFlow</item>
+    </style>
+
+    <style name="Toolbar.Actionbar" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="Toolbar.OverFlow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/white</item>
     </style>
 
     <style name="ToolbarTitle">     <!-- 툴바 내부 텍스트 스타일 -->
