@@ -31,14 +31,13 @@ class PageOneViewHolder(val binding: TripRecyclerviewBinding) :         // 리�
 }
 
 // 시작 페이지 어뎁터
-class PageOneAdapter(val tripList: MutableList<Trip>) :
+class PageOneAdapter(val tripList: MutableList<ClassTrip>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int {                              // 아이템이 몇 개인지 반환하는 함수
         return if (tripList.size == 0) EMPTY else tripList.size     // 0이면 종료되기 때문에 +1해서 반환
     }
     override fun getItemViewType(position: Int): Int {              // 아이템 개수에 따라서 viewType 반환
-        Log.d("emptyCheck", "$EMPTY")
         return if (tripList.size != 0) ITEM
         else EMPTY
     }
@@ -55,7 +54,6 @@ class PageOneAdapter(val tripList: MutableList<Trip>) :
                         LayoutInflater.from(parent.context), parent, false
                     )
                 )
-
             }
 
             ITEM ->                                     // 리사이클러뷰에 아이템이 있다면
@@ -80,11 +78,9 @@ class PageOneAdapter(val tripList: MutableList<Trip>) :
             is PageOneViewHolder -> {                       // 아이템 있으면 각각 연결하기
                 val binding = holder.binding
                 binding.tripListCountry.text = tripList[position].destination     // 텍스트를 받아와서 화면에 표시
-                binding.tripStart.text = tripList[position].start
-                binding.tripEnd.text = tripList[position].end
+                binding.tripStart.text = tripList[position].tripStart
+                binding.tripEnd.text = tripList[position].tripEnd
             }
         }
     }
-
-    companion object
 }
