@@ -1,0 +1,180 @@
+<resources>
+    <string-array name="basic">
+        <item>상의</item>
+        <item>하의</item>
+        <item>겉옷</item>
+        <item>모자</item>
+        <item>양말</item>
+        <item>속옷</item>
+        <item>잠옷</item>
+
+        <item>휴대폰</item>
+        <item>충전기</item>
+        <item>보조 배터리</item>
+        <item>이어폰</item>
+        <item>유심/이심/포켓와이파이</item>
+
+        <item>지갑</item>
+        <item>우산</item>
+        <item>상비약</item>
+        <item>휴지</item>
+        <item>물티슈</item>
+
+        <item>렌즈</item>
+        <item>렌즈 세척액</item>
+        <item>안경</item>
+        <item>안경 닦이</item>
+
+        <item>귀마개</item>
+        <item>안대</item>
+
+        <item>피임약</item>
+        <item>탐폰</item>
+    </string-array>
+    <string-array name="self_care">
+        <item>칫솔</item>
+        <item>치약</item>
+        <item>빗</item>
+        <item>면봉</item>
+        <item>헤어 드라이어</item>
+        <item>고데기</item>
+
+        <item>기본 화장품</item>
+        <item>색조 화장품</item>
+        <item>향수</item>
+        <item>선글라스</item>
+        <item>악세서리</item>
+
+        <item>면도기</item>
+        <item>쉐이빙 젤</item>
+    </string-array>
+    <string-array name="International">
+        <item>여권</item>
+        <item>비자(출입국 증명서)</item>
+        <item>예방 접종 증명서</item>
+        <item>건강 보험증</item>
+        <item>외화</item>
+        <item>전원 어댑터</item>
+        <item>멀티 어댑터</item>
+        <item>목적지 전압 확인</item>
+        <item>펜</item>
+    </string-array>
+    <string-array name="bicycle">
+        <item>헬멧</item>
+        <item>자전거</item>
+        <item>자전거 상의</item>
+        <item>자전거 하의</item>
+        <item>자전거 신발</item>
+    </string-array>
+    <string-array name="camping">
+        <item>텐트</item>
+        <item>침낭</item>
+        <item>슬리핑 패드</item>
+        <item>베개</item>
+
+        <item>식기</item>
+        <item>조리 도구</item>
+        <item>캠핑 음식</item>
+        <item>과자</item>
+        <item>물 여과 장치</item>
+
+        <item>플래시</item>
+        <item>헤드 램프</item>
+        <item>장작</item>
+        <item>성냥/라이터</item>
+
+        <item>진드기 살충제</item>
+        <item>벌레 퇴치 스프레이</item>
+
+        <item>나침반</item>
+        <item>소형 GPS</item>
+        <item>타월</item>
+        <item>다용도 나이프</item>
+    </string-array>
+    <string-array name="hiking">
+        <item>등산화</item>
+        <item>물병</item>
+        <item>벌레 퇴치 스프레이</item>
+        <item>나침반</item>
+        <item>소형 GPS</item>
+    </string-array>
+    <string-array name="photo">
+        <item>카메라</item>
+        <item>삼각대</item>
+        <item>메모리 카드</item>
+        <item>카메라 충전기</item>
+        <item>카메라 가방</item>
+    </string-array>
+    <string-array name="running">
+        <item>런닝화</item>
+        <item>스포츠 양말</item>
+        <item>스포츠 바지</item>
+        <item>스포츠 셔츠</item>
+    </string-array>
+    <string-array name="swimming">
+        <item>수영복</item>
+        <item>비치 웨어</item>
+        <item>물안경</item>
+        <item>모자</item>
+        <item>여분 신발</item>
+        <item>여분 양말</item>
+        <item>여분 속옷</item>
+        <item>비치 타월</item>
+        <item>자외선 차단제</item>
+    </string-array>
+    <string-array name="winterSports">
+        <item>겨울 재킷</item>
+        <item>겨울 바지</item>
+        <item>겨울 모자/비니</item>
+        <item>겨울 장갑</item>
+        <item>내복</item>
+    </string-array>
+    <string-array name="work">
+        <item>사원증</item>
+        <item>명함</item>
+        <item>노트북</item>
+        <item>노트북 충전기</item>
+        <item>VPN</item>
+    </string-array>
+    <string-array name="baby">
+        <item>아기 옷</item>
+        <item>아기 양말</item>
+        <item>아기 신발</item>
+        <item>아기 턱받이</item>
+        <item>아기 모자</item>
+
+        <item>기저귀</item>
+        <item>기저귀 패드</item>
+        <item>담요</item>
+        <item>비닐봉지</item>
+        <item>기저귀 발진 크림</item>
+        <item>아기용 물티슈</item>
+        <item>티슈</item>
+        <item>향균 손 세정제</item>
+        <item>아기 비누</item>
+        <item>아기 로션</item>
+        <item>아기 전용 자외선 차단제</item>
+
+        <item>노리개 젖꼭지</item>
+        <item>아기 장난감</item>
+
+        <item>아기 음식</item>
+        <item>아기 간식</item>
+        <item>이유식</item>
+        <item>물 또는 주스</item>
+        <item>아기 물병</item>
+        <item>아기 빨대컵</item>
+
+        <item>유축기</item>
+        <item>구급 상자</item>
+        <item>아기 진통제</item>
+        <item>아기 소화제</item>
+
+        <item>포대기 또는 아기띠</item>
+        <item>아기 카시트</item>
+        <item>접이식 유모차</item>
+        <item>아기 수첩</item>
+
+        <item>여행 동의서</item>
+    </string-array>
+</resources>
