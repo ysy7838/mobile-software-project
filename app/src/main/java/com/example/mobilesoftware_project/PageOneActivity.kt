@@ -21,7 +21,7 @@ class PageOneActivity : AppCompatActivity() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
         /* Firebase DB 연결 */
-        db.collection("trips")                // 컬렉션 지정
+        db.collection("travels")                // 컬렉션 지정
             .get()                                          // 전체 가져오기
             .addOnSuccessListener { result ->               // 성공하면
                 for (document in result) {                  // 각각의 문서를
