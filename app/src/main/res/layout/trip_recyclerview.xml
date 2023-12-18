@@ -5,7 +5,6 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/trip_list_item"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -23,7 +22,7 @@
         android:id="@+id/trip_list_country"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center"
         style="@style/TripListPlace"
         />
@@ -33,11 +32,30 @@
     위에 있는 장소 텍스트와 마찬가지.
     -->
     <TextView
-        android:id="@+id/trip_list_period"
+        android:id="@+id/trip_start"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:gravity="center_vertical"
+        android:gravity="center"
+        style="@style/TripListPeriod"
+        />
+
+    <TextView
+        android:id="@+id/trip_list_period"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="~"
+        style="@style/TripListPeriod"
+        />
+
+    <TextView
+        android:id="@+id/trip_end"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:gravity="center"
         style="@style/TripListPeriod"
         />
 

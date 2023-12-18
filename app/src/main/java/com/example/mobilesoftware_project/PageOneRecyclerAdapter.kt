@@ -17,12 +17,10 @@ import com.example.mobilesoftware_project.databinding.TripRecyclerviewEmptyBindi
 private const val EMPTY = 1         // 데이터가 없을 떄 viewType 상수로 선언
 private const val ITEM = 2          // 데이터가 있을 때 viewType 상수로 선언
 
-//리사이클러 뷰에 아이템이 없을 경우
-class PageOneEmptyHolder(val binding: TripRecyclerviewEmptyBinding) :
+class PageOneEmptyHolder(val binding: TripRecyclerviewEmptyBinding) :   //리사이클러 뷰에 아이템이 없을 경우
     RecyclerView.ViewHolder(binding.root)
 
-// 리사이클러 뷰에 아이템이 있을 경우
-class PageOneViewHolder(val binding: TripRecyclerviewBinding) :
+class PageOneViewHolder(val binding: TripRecyclerviewBinding) :         // 리사이클러 뷰에 아이템이 있을 경우
     RecyclerView.ViewHolder(binding.root) {
     init {
         itemView.setOnClickListener {
@@ -33,14 +31,13 @@ class PageOneViewHolder(val binding: TripRecyclerviewBinding) :
 }
 
 // 시작 페이지 어뎁터
-class PageOneAdapter(val tripList: ArrayList<Trip>) :
+class PageOneAdapter(val tripList: MutableList<ClassTrip>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int {                              // 아이템이 몇 개인지 반환하는 함수
         return if (tripList.size == 0) EMPTY else tripList.size     // 0이면 종료되기 때문에 +1해서 반환
     }
     override fun getItemViewType(position: Int): Int {              // 아이템 개수에 따라서 viewType 반환
-        Log.d("emptyCheck", "$EMPTY")
         return if (tripList.size != 0) ITEM
         else EMPTY
     }
@@ -57,7 +54,6 @@ class PageOneAdapter(val tripList: ArrayList<Trip>) :
                         LayoutInflater.from(parent.context), parent, false
                     )
                 )
-
             }
 
             ITEM ->                                     // 리사이클러뷰에 아이템이 있다면
@@ -78,14 +74,12 @@ class PageOneAdapter(val tripList: ArrayList<Trip>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {                                     // 뷰 홀더 바인딩
-            is PageOneEmptyHolder -> {                      // 아이템 없으면 연결할 필요 X
-                Log.d("emptyCheck", "onBindViewholder에서 emptyholder랑 바인드")
-            }     // 아이템 없으면 연결 X
+            is PageOneEmptyHolder -> {}                      // 아이템 없으면 연결할 필요 X
             is PageOneViewHolder -> {                       // 아이템 있으면 각각 연결하기
-                Log.d("emptyCheck", "onBindViewholder에서 viewholder랑 바인드")
                 val binding = holder.binding
-                binding.tripListCountry.text = tripList[position].place     // 텍스트를 받아와서 화면에 표시
-                binding.tripListPeriod.text = tripList[position].period
+                binding.tripListCountry.text = tripList[position].destination     // 텍스트를 받아와서 화면에 표시
+                binding.tripStart.text = tripList[position].tripStart
+                binding.tripEnd.text = tripList[position].tripEnd
             }
         }
     }

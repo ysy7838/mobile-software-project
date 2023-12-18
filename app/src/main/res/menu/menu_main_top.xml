@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/topMenu_check_activate"
-        android:title = "체크된 항목 숨기기" />
+        android:title = "@string/CheckActivate" />
 
-    <!--
-        이 부분을 여행 편집으로 수정하는 게 어떨까?
-        여행 편집 -> 피그마 2번째 페이지 띄우고 수정 & 적용
-    -->
-    <item android:id="@+id/topMenu_trip_edit"
+    <item android:id="@+id/topMenu_activity_edit"
         android:icon="@android:drawable/ic_menu_help"
-        android:title = "활동 편집" />
+        android:title = "@string/TripEdit" />
 
     <item android:id="@+id/topMenu_trip_delete"
         android:icon="@android:drawable/ic_menu_help"
-        android:title = "여행 삭제" />
+        android:title = "@string/TripDelete" />
 </menu>

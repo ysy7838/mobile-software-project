@@ -3,39 +3,39 @@ package com.example.mobilesoftware_project
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobilesoftware_project.databinding.PageOneMainBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class PageOneActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {        // 액티비티 시작
+    override fun onCreate(savedInstanceState: Bundle?) {                // 액티비티 시작
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_one_main)
         val binding = PageOneMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)     // toolbar 기본 타이틀 안 보이게
-                                                                // 대신 안에 textView 넣어서 처리함.
+        supportActionBar?.setDisplayShowTitleEnabled(false)                 // toolbar 기본 타이틀 안 보이게 -> textView로 따로 처리
 
-        val triplistempty = arrayListOf<Trip>()                 // 잘 동작하는지 확인을 위해 여기에 선언
-        val triplist = arrayListOf(                             // 나중에 연동 방법에 따라서 코드를 수정해야 함
-            Trip("제주", "11.11.11 ~ 11.11.22"),
-            Trip("", "22.22.22 ~ 22.22.22"),        // 값이 비어 있는 경우도 생각
-            Trip("중국", ""),                        // 만들 때 유효성 검사 필요
-            Trip("", ""),
-            Trip("제주", "11.11.11 ~ 11.11.22"),
-            Trip("일본", "22.22.22 ~ 22.22.22"),
-            Trip("중국", "33.33.33 ~ 33.33.33"),
-            Trip("미국", "44.44.44 ~ 44.44.44"),
-            Trip("제주", "11.11.11 ~ 11.11.22"),
-            Trip("일본", "22.22.22 ~ 22.22.22"),
-            Trip("중국", "33.33.33 ~ 33.33.33"),
-            Trip("미국", "44.44.44 ~ 44.44.44"),
-        )
+        val triplist = mutableListOf<ClassTrip>()                        // 동작 확인을 위해 여기에 선언
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-        binding.TripListRecycler.layoutManager = LinearLayoutManager(this)
-        binding.TripListRecycler.adapter = PageOneAdapter(triplist)
+        /* Firebase DB 연결 */
+        db.collection("travels")                // 컬렉션 지정
+            .get()                                          // 전체 가져오기
+            .addOnSuccessListener { result ->               // 성공하면
+                for (document in result) {                  // 각각의 문서를
+                    val selectTrip = document.toObject(ClassTrip::class.java)   // 객체에 저장
+                    triplist.add(selectTrip)                                      // 객체를 리스트에 추가
+                }
+                binding.TripListRecycler.layoutManager = LinearLayoutManager(this)
+                binding.TripListRecycler.adapter = PageOneAdapter(triplist)         // 값을 저장한 리스트를 넘겨줌
+            }
+            .addOnFailureListener { exception ->            // 실패하면 로그 출력
+                Log.d("DBData", "Error getting documents", exception)
+            }
 
-        binding.fabAddTrip.setOnClickListener{
+        binding.fabAddTrip.setOnClickListener{      // + 버튼 누르면 새 액티비티로 전환 -> 2번쨰 액티비티로 수정해야 함
             val intent = Intent(this, PageThreetoSixActivity::class.java)
             startActivity(intent)
         }

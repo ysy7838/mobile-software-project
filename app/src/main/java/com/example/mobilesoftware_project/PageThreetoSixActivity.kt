@@ -89,7 +89,7 @@ class PageThreetoSixActivity : AppCompatActivity() {
                 Log.d("incomplete", "check_activate")
             }
 
-            R.id.topMenu_trip_edit -> {            // 활동을 편집할 수 있도록
+            R.id.topMenu_activity_edit -> {            // 활동을 편집할 수 있도록
                 Log.d("incomplete", "trip_edit")
             }
 

@@ -2,15 +2,23 @@
     <string name="app_name">mobilesoftware_project</string>     <!-- 나중에 이름 짓자 -->
 
     <!-- pageOne 관련 String -->
-    <string name="PageOneTitle">"시작하기"</string>
-    <string name="AddTrip">여행 계획 추가</string>
-    <string name="EmptyView">여행 계획이 없습니다.</string>
+        <string name="PageOneTitle">"시작하기"</string>
+        <string name="AddTrip">여행 계획 추가</string>
+        <string name="EmptyView">여행 계획이 없습니다.</string>
 
-    <!-- pageThree 관련 String -->
-    <string name="CheckPage">"여행 체크리스트"</string>
-    <string name="SchedulePage">"여행 계획"</string>
-    <string name="WeatherPage">"날씨"</string>
-    <string name="ExchangePage">"환율 계산기"</string>
-    <string name="Error">"오류가 발생하였습니다."</string>
+    <!-- page Checklist 관련 String -->
+        <string name="checkDelete">checkDelete</string>
+
+    <!-- page 3 ~ 6 관련 String -->
+        <string name="CheckPage">"여행 체크리스트"</string>
+        <string name="SchedulePage">"여행 계획"</string>
+        <string name="WeatherPage">"날씨"</string>
+        <string name="ExchangePage">"환율 계산기"</string>
+        <string name="Error">"오류가 발생하였습니다."</string>
+
+    <!-- page 3 ~ 6 Menu 관련 String -->
+        <string name="CheckActivate">"체크된 항목 숨기기"</string>
+        <string name="TripEdit">"여행 편집"</string>
+        <string name="TripDelete">"여행 삭제"</string>
 
 </resources>
