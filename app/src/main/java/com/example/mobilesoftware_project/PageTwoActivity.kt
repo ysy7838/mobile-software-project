@@ -30,16 +30,18 @@ class PageTwoActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
 
         // DatePickers 설정
-        val startDate = findViewById<EditText>(R.id.start_date)
-        startDate.setOnClickListener {
+        val dateRange = findViewById<EditText>(R.id.date_range)
+        dateRange.setOnClickListener {
             val datePicker = MaterialDatePicker.Builder.dateRangePicker().build()
             datePicker.show(supportFragmentManager, "date_picker")
             datePicker.addOnPositiveButtonClickListener {
                 val dates = it
                 if (dates != null) {
                     val startDateString = convertLongToTime(dates.first)
-                    startDate.setText(startDateString)
+                    val endDateString = convertLongToTime(dates.second)
+                    dateRange.setText("$startDateString - $endDateString")
                     editor.putString("start_date", startDateString)
+                    editor.putString("end_date", endDateString)
                 }
             }
         }
