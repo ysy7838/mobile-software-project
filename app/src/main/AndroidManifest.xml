@@ -30,6 +30,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".PageThreetoSixActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAg26zMzdpMr3jitBBxFXYfVp9_I7xB92o" />
     </application>
 
 </manifest>
