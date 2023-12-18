@@ -5,19 +5,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobilesoftware_project.databinding.PageThreeMainBinding
+import java.util.ArrayList
+import androidx.annotation.RequiresApi
+/*
 import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.ArrayList
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
+
+ */
 
 private const val CHECK = 0         // 프래그먼트를 선택할 때 사용하기 위해 선언
 private const val SCHEDULE = 1

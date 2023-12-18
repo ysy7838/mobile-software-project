@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.annotation.RequiresApi
 import com.example.mobilesoftware_project.databinding.FragmentExchangeRateBinding
+/*
 import com.example.mobilesoftware_project.databinding.PageThreeMainBinding
 import com.google.android.gms.common.internal.service.Common.API
 import kotlinx.coroutines.NonDisposableHandle.parent
@@ -28,6 +29,8 @@ import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.Calendar
 import java.util.Date
+
+ */
 
 /*
     환율 계산기를 보여주는 Fragment
