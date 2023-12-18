@@ -10,7 +10,6 @@ class FragmentRecyclerTwoAdapter(val checkboxList: ArrayList<ClassCheckStatus>) 
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int {
-        Log.d("checkboxlist", "${checkboxList.size}")
         return checkboxList?.size ?: 0
     }
 

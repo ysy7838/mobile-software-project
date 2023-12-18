@@ -42,8 +42,6 @@ class FragmentCheck : Fragment() {
         if (isInternational == true) trueActivity.add("isInternational")
         if (haveChild == true) trueActivity.add("haveChild")
 
-        Log.d("activitycheck", "${trueActivity}")
-
         val classTotal = arrayListOf<ClassCheckTotal>()
 
         val basicCheck = arrayListOf<ClassCheckStatus>()
