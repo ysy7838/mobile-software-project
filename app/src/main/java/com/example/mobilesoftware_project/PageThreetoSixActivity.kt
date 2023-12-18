@@ -18,6 +18,7 @@ class PageThreetoSixActivity : AppCompatActivity() {
 
     lateinit var binding: PageThreeMainBinding
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_three_main)
@@ -27,6 +28,21 @@ class PageThreetoSixActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)     // toolbar 기본 타이틀 안 보이게
         supportActionBar?.setDisplayHomeAsUpEnabled(true)       // 뒤로 가기 버튼을 만듦
 
+
+        val activityIndex = intent.getStringArrayExtra("activityIndex")
+        val activityValue = intent.getBooleanArrayExtra("activityValue")
+        val sex = intent.getStringExtra("sex")
+        val destination = intent.getBooleanExtra("destination", false)
+        val isDomestic = intent.getBooleanExtra("isDomestic", false)
+        val isInternational = intent.getStringExtra("isInternational")
+        val tripStart = intent.getStringExtra("tripStart")
+        val tripEnd = intent.getStringExtra("tripEnd")
+        val haveChild = intent.getBooleanExtra("haveChild", false)
+
+        Log.d("bundlecheck2", "${activityIndex}")
+        Log.d("bundlecheck2", "${activityValue}")
+
+
         val fragments: List<Fragment>                           // 프래그먼트를 리스트로 만듦
         = listOf(FragmentCheck(), FragmentSchedule(), FragmentWeather(), FragmentExchangeRate())
 
@@ -35,6 +51,20 @@ class PageThreetoSixActivity : AppCompatActivity() {
             transaction.add(R.id.menu_frame_layout, fragments[i])
         }
         transaction.commit()
+
+        var bundle = Bundle()
+
+        bundle.putStringArray("activityIndex", activityIndex)
+        bundle.putBooleanArray("activityValue", activityValue)
+        bundle.putString("sex", sex)
+        bundle.putString("isInternational", isInternational)
+        bundle.putBoolean("haveChild", haveChild)
+
+        fragments[0].arguments = bundle
+        supportFragmentManager!!.beginTransaction()
+            .commit()
+
+
         // 적용
         binding.menuBottomNavigation.run {          // 아래 메뉴를 선택했을 때 실행
             setOnItemSelectedListener {

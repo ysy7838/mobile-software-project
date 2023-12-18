@@ -19,16 +19,8 @@ private const val ITEM = 2          // 데이터가 있을 때 viewType 상수�
 
 class PageOneEmptyHolder(val binding: TripRecyclerviewEmptyBinding) :   //리사이클러 뷰에 아이템이 없을 경우
     RecyclerView.ViewHolder(binding.root)
-
 class PageOneViewHolder(val binding: TripRecyclerviewBinding) :         // 리사이클러 뷰에 아이템이 있을 경우
-    RecyclerView.ViewHolder(binding.root) {
-    init {
-        itemView.setOnClickListener {
-            val intent = Intent(itemView.context, PageThreetoSixActivity::class.java)       // 목록이랑 연결
-            ContextCompat.startActivity(itemView.context, intent, null)             // 참고: 참고: https://kumgo1d.tistory.com/44
-        }
-    }
-}
+    RecyclerView.ViewHolder(binding.root)
 
 // 시작 페이지 어뎁터
 class PageOneAdapter(val tripList: MutableList<ClassTrip>) :
@@ -80,6 +72,33 @@ class PageOneAdapter(val tripList: MutableList<ClassTrip>) :
                 binding.tripListCountry.text = tripList[position].destination     // 텍스트를 받아와서 화면에 표시
                 binding.tripStart.text = tripList[position].tripStart
                 binding.tripEnd.text = tripList[position].tripEnd
+
+                holder.itemView.setOnClickListener {
+                    val intent = Intent(holder.itemView.context, PageThreetoSixActivity::class.java)       // 목록이랑 연결
+
+                    val activityIndex = arrayListOf<String>()
+                    val activityValue = arrayListOf<Boolean>()
+
+                    tripList[position].activity.forEach {key, value ->
+                        activityIndex.add(key)
+                        activityValue.add(value)
+                    }
+
+                    val activity: Array<Pair<String, Boolean>> = tripList[position].activity.toList().toTypedArray()
+                    //val activityIndex = arrayOf("basic", "bicycle", "camping", "hiking", "photo", "running", "swimming", "winterSports", "work")
+
+                    intent.putExtra("activityIndex", activityIndex)
+                    intent.putExtra("activityValue", activityValue)
+                    intent.putExtra("sex", tripList[position].sex)
+                    intent.putExtra("destination", tripList[position].destination)
+                    intent.putExtra("isDomestic", tripList[position].isDomestic)
+                    intent.putExtra("isInternational", tripList[position].isInternational)
+                    intent.putExtra("tripStart", tripList[position].tripStart)
+                    intent.putExtra("tripEnd", tripList[position].tripEnd)
+                    intent.putExtra("haveChild", tripList[position].haveChild)
+
+                    ContextCompat.startActivity(holder.itemView.context, intent, null)             // 참고: 참고: https://kumgo1d.tistory.com/44
+                }
             }
         }
     }

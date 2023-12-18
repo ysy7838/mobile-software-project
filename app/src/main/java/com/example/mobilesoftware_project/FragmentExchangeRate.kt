@@ -1,15 +1,19 @@
 package com.example.mobilesoftware_project
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import com.example.mobilesoftware_project.databinding.FragmentExchangeRateBinding
+import com.example.mobilesoftware_project.databinding.PageThreeMainBinding
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
+import java.time.LocalDate
 
 /*
     환율 계산기를 보여주는 Fragment
@@ -20,10 +24,14 @@ import java.net.URL
 
 class FragmentExchangeRate : Fragment() {
     lateinit var eBinding: FragmentExchangeRateBinding
+
+    /*
     inner class NetworkThread: Thread() {
+        @RequiresApi(Build.VERSION_CODES.O)
         override fun run() {
-            val key = "key"
-            val site = "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=YvYaRkYwmbIoYa2LQOqGWO0JWJyyiN3R&searchdate=20231201&data=AP01"
+            val key = "YvYaRkYwmbIoYa2LQOqGWO0JWJyyiN3R"
+            val date = LocalDate.now()
+            val site = "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=YvYaRkYwmbIoYa2LQOqGWO0JWJyyiN3R&searchdate=${date}&data=AP01"
             val mobileOS = "&MobileOS=AND"
 
             val url = URL(site)
@@ -49,6 +57,7 @@ class FragmentExchangeRate : Fragment() {
             }
         }
     }
+     */
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
