@@ -17,7 +17,8 @@ class PageOneActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)                 // toolbar 기본 타이틀 안 보이게 -> textView로 따로 처리
 
-        val triplist = mutableListOf<ClassTrip>()                        // 동작 확인을 위해 여기에 선언
+
+        val triplist = mutableListOf<ClassTrip>()
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
         /* Firebase DB 연결 */

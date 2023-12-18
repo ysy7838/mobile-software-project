@@ -4,6 +4,19 @@ package com.example.mobilesoftware_project
     FireBase에서 가져온 데이터를 저장하는 데 사용하는 클래스
  */
 class ClassTrip {
+
+    /*
+        val basic: Boolean = true
+    val bicycle: Boolean = false
+    val camping: Boolean = false
+    val hiking: Boolean = false
+    val photo: Boolean = false
+    val running: Boolean = false
+    val swimming: Boolean = false
+    val winterSports: Boolean = false
+    val work: Boolean = true
+     */
+
     val activity: MutableMap<String, Boolean> = mutableMapOf(
         "basic" to true,
         "bicycle" to false,
@@ -23,3 +36,7 @@ class ClassTrip {
     val tripEnd: String = ""
     val haveChild: Boolean = false
 }
+data class ActivityList(
+    var name: String,
+    var answer: Boolean
+)

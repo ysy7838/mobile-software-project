@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--
-    여행 리스트를 리사이클러뷰로 출력
--->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/trip_list_item"
-    android:orientation="horizontal"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp"
-    android:paddingStart="10dp"
-    android:paddingEnd="10dp"
-    android:background="?attr/selectableItemBackground"
-    >
+    android:orientation="horizontal">
 
     <CheckBox
         android:id="@+id/checkbox"
