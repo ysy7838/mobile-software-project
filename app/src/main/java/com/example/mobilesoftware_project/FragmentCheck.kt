@@ -43,7 +43,7 @@ class FragmentCheck : Fragment() {
         Log.d("activitycheck", "${trueActivity}")
 
         cBinding.TripListRecycler.layoutManager = LinearLayoutManager(activity)
-        cBinding.TripListRecycler.adapter = context?.let { FragmentCheckRecyclerAdapter(it, trueActivity, sex, isInternational, haveChild) }
+        cBinding.TripListRecycler.adapter = context?.let { FragmentCheckRecyclerAdapter(it, trueActivity) }
         return cBinding.root
     }
 }

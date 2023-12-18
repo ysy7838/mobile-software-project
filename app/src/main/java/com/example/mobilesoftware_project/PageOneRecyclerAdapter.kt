@@ -83,10 +83,8 @@ class PageOneAdapter(val tripList: MutableList<ClassTrip>) :
                         activityIndex.add(key)
                         activityValue.add(value.toString())
                     }
-
-                    val activity: Array<Pair<String, Boolean>> = tripList[position].activity.toList().toTypedArray()
+                    //val activity: Array<Pair<String, Boolean>> = tripList[position].activity.toList().toTypedArray()
                     //val activityIndex = arrayOf("basic", "bicycle", "camping", "hiking", "photo", "running", "swimming", "winterSports", "work")
-
                     intent.putExtra("activityIndex", activityIndex)
                     intent.putExtra("activityValue", activityValue)
                     intent.putExtra("sex", tripList[position].sex)
