@@ -37,7 +37,7 @@ class PageOneActivity : AppCompatActivity() {
             }
 
         binding.fabAddTrip.setOnClickListener{      // + 버튼 누르면 새 액티비티로 전환 -> 2번쨰 액티비티로 수정해야 함
-            val intent = Intent(this, PageThreetoSixActivity::class.java)
+            val intent = Intent(this, PageTwoActivity::class.java)
             startActivity(intent)
         }
     }
