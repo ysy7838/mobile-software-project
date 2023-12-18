@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobilesoftware_project.databinding.PageOneMainBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import android.content.Context
 
 class PageOneActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {                // 액티비티 시작

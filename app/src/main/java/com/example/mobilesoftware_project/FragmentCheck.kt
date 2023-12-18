@@ -21,21 +21,29 @@ class FragmentCheck : Fragment() {
     ): View? {
         cBinding = FragmentCheckBinding.inflate(inflater, container, false)
 
-        val activityIndex = arguments?.getStringArray("activityIndex")
-        val activityValue = arguments?.getBooleanArray("activityValue")
+        val activityIndex = arguments?.getStringArrayList("activityIndex")
+        val activityValue = arguments?.getStringArrayList("activityValue")
         val sex = arguments?.getString("sex")
         val isInternational = arguments?.getBoolean("isInternational")
         val haveChild = arguments?.getBoolean("haveChild")
 
-        Log.d("bundlecheck", "${activityIndex?.get(1)}")
-        Log.d("bundlecheck", "${activityValue?.get(1)}")
-        Log.d("bundlecheck", "${sex}")
-        Log.d("bundlecheck", "${isInternational}")
-        Log.d("bundlecheck", "${haveChild}")
+        val trueActivity = arrayListOf<String>()
+        if (activityValue != null) {
+            for (i in 0..activityValue.lastIndex) {
+                if (activityValue[i] == "true") {
+                    activityIndex?.get(i)?.let { trueActivity.add(it) }
+                }
+            }
+        }
 
+        if (sex == "female") trueActivity.add("female")
+        if (isInternational == true) trueActivity.add("isInternational")
+        if (haveChild == true) trueActivity.add("haveChild")
+
+        Log.d("activitycheck", "${trueActivity}")
 
         cBinding.TripListRecycler.layoutManager = LinearLayoutManager(activity)
-        cBinding.TripListRecycler.adapter = FragmentCheckRecyclerAdapter(activityIndex, activityValue, sex, isInternational, haveChild)
+        cBinding.TripListRecycler.adapter = context?.let { FragmentCheckRecyclerAdapter(it, trueActivity, sex, isInternational, haveChild) }
         return cBinding.root
     }
 }

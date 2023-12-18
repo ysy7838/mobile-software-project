@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.mobilesoftware_project.databinding.PageThreeMainBinding
+import java.util.ArrayList
 
 private const val CHECK = 0         // 프래그먼트를 선택할 때 사용하기 위해 선언
 private const val SCHEDULE = 1
@@ -29,8 +30,8 @@ class PageThreetoSixActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)       // 뒤로 가기 버튼을 만듦
 
 
-        val activityIndex = intent.getStringArrayExtra("activityIndex")
-        val activityValue = intent.getBooleanArrayExtra("activityValue")
+        val activityIndex : ArrayList<String>? = intent.getStringArrayListExtra("activityIndex")
+        val activityValue :ArrayList<String>? = intent.getStringArrayListExtra("activityValue")
         val sex = intent.getStringExtra("sex")
         val destination = intent.getBooleanExtra("destination", false)
         val isDomestic = intent.getBooleanExtra("isDomestic", false)
@@ -38,10 +39,6 @@ class PageThreetoSixActivity : AppCompatActivity() {
         val tripStart = intent.getStringExtra("tripStart")
         val tripEnd = intent.getStringExtra("tripEnd")
         val haveChild = intent.getBooleanExtra("haveChild", false)
-
-        Log.d("bundlecheck2", "${activityIndex}")
-        Log.d("bundlecheck2", "${activityValue}")
-
 
         val fragments: List<Fragment>                           // 프래그먼트를 리스트로 만듦
         = listOf(FragmentCheck(), FragmentSchedule(), FragmentWeather(), FragmentExchangeRate())
@@ -54,8 +51,8 @@ class PageThreetoSixActivity : AppCompatActivity() {
 
         var bundle = Bundle()
 
-        bundle.putStringArray("activityIndex", activityIndex)
-        bundle.putBooleanArray("activityValue", activityValue)
+        bundle.putStringArrayList("activityIndex", activityIndex)
+        bundle.putStringArrayList("activityValue", activityValue)
         bundle.putString("sex", sex)
         bundle.putString("isInternational", isInternational)
         bundle.putBoolean("haveChild", haveChild)

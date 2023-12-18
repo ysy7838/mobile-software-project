@@ -136,7 +136,7 @@
         <item>노트북 충전기</item>
         <item>VPN</item>
     </string-array>
-    <string-array name="baby">
+    <string-array name="haveChild">
         <item>아기 옷</item>
         <item>아기 양말</item>
         <item>아기 신발</item>
@@ -176,5 +176,8 @@
         <item>아기 수첩</item>
 
         <item>여행 동의서</item>
+    </string-array>
+    <string-array name="female">
+        <item>여성 용품</item>
     </string-array>
 </resources>
