@@ -2,23 +2,37 @@
     <string name="app_name">mobilesoftware_project</string>     <!-- 나중에 이름 짓자 -->
 
     <!-- pageOne 관련 String -->
-        <string name="PageOneTitle">"시작하기"</string>
-        <string name="AddTrip">여행 계획 추가</string>
-        <string name="EmptyView">여행 계획이 없습니다.</string>
+    <string name="PageOneTitle">"시작하기"</string>
+    <string name="AddTrip">여행 계획 추가</string>
+    <string name="EmptyView">여행 계획이 없습니다.</string>
+
+    <!-- pageTwo의 ChooseAcitvity 관련 String -->
+    <string name="job">업무</string>
+    <string name="explore">답사</string>
+    <string name="photo">사진여행</string>
+    <string name="camping">캠핑</string>
+    <string name="religion">종교</string>
+    <string name="hocance">호캉스</string>
+    <string name="medic">의료</string>
+    <string name="volunteer">봉사활동</string>
+    <string name="shopping">쇼핑</string>
+
+    <string name="swim">해변/수영</string>
 
     <!-- page Checklist 관련 String -->
-        <string name="checkDelete">checkDelete</string>
+    <string name="checkDelete">checkDelete</string>
 
     <!-- page 3 ~ 6 관련 String -->
-        <string name="CheckPage">"여행 체크리스트"</string>
-        <string name="SchedulePage">"여행 계획"</string>
-        <string name="WeatherPage">"날씨"</string>
-        <string name="ExchangePage">"환율 계산기"</string>
-        <string name="Error">"오류가 발생하였습니다."</string>
+    <string name="CheckPage">"여행 체크리스트"</string>
+    <string name="SchedulePage">"여행 계획"</string>
+    <string name="UserPage">"새로운 여행 시작"</string>
+    <string name="WeatherPage">"날씨"</string>
+    <string name="ExchangePage">"환율 계산기"</string>
+    <string name="Error">"오류가 발생하였습니다."</string>
 
     <!-- page 3 ~ 6 Menu 관련 String -->
-        <string name="CheckActivate">"체크된 항목 숨기기"</string>
-        <string name="TripEdit">"여행 편집"</string>
-        <string name="TripDelete">"여행 삭제"</string>
+    <string name="CheckActivate">"체크된 항목 숨기기"</string>
+    <string name="TripEdit">"여행 편집"</string>
+    <string name="TripDelete">"여행 삭제"</string>
 
 </resources>
