@@ -77,16 +77,14 @@ class PageOneAdapter(val tripList: MutableList<ClassTrip>) :
                     val intent = Intent(holder.itemView.context, PageThreetoSixActivity::class.java)       // 목록이랑 연결
 
                     val activityIndex = arrayListOf<String>()
-                    val activityValue = arrayListOf<Boolean>()
+                    val activityValue = arrayListOf<String>()
 
                     tripList[position].activity.forEach {key, value ->
                         activityIndex.add(key)
-                        activityValue.add(value)
+                        activityValue.add(value.toString())
                     }
-
-                    val activity: Array<Pair<String, Boolean>> = tripList[position].activity.toList().toTypedArray()
+                    //val activity: Array<Pair<String, Boolean>> = tripList[position].activity.toList().toTypedArray()
                     //val activityIndex = arrayOf("basic", "bicycle", "camping", "hiking", "photo", "running", "swimming", "winterSports", "work")
-
                     intent.putExtra("activityIndex", activityIndex)
                     intent.putExtra("activityValue", activityValue)
                     intent.putExtra("sex", tripList[position].sex)

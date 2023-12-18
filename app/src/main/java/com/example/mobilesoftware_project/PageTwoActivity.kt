@@ -2,6 +2,8 @@ package com.example.mobilesoftware_project
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,8 @@ class PageTwoActivity : AppCompatActivity() {
         // Toolbar 설정
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)     // toolbar 기본 타이틀 안 보이게
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)       // 뒤로 가기 버튼을 만듦
 
         val sharedPreferences = getSharedPreferences("PREFS", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -75,5 +79,15 @@ class PageTwoActivity : AppCompatActivity() {
         val date = Date(time)
         val format = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
         return format.format(date)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {       // 툴바에 있는 게 선택 되었을 때
+        when (item.itemId) {                         // 뒤로가기 버튼이 선택되었을 때
+            android.R.id.home -> {                  // 여기에서 지금까지 한 거 저장하고 finish 해야 함
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

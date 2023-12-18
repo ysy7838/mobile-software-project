@@ -2,6 +2,7 @@ package com.example.mobilesoftware_project
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,9 @@ class ChooseActivity : AppCompatActivity() {
         binding = ActivityChooseBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)     // toolbar 기본 타이틀 안 보이게
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)       // 뒤로 가기 버튼을 만듦
 
 
         // 저장버튼을 누를 시
@@ -95,5 +99,14 @@ class ChooseActivity : AppCompatActivity() {
                 .makeText(this, "Removed 4th Chip", Toast.LENGTH_SHORT)
                 .show()
         }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {       // 툴바에 있는 게 선택 되었을 때
+        when (item.itemId) {                         // 뒤로가기 버튼이 선택되었을 때
+            android.R.id.home -> {                  // 여기에서 지금까지 한 거 저장하고 finish 해야 함
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
