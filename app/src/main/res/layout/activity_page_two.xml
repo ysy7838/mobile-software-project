@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 뒤로가기 / 타이틀 / 더보기 메뉴 순으로 되어 있는 appbar -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/mainBlue"
+                app:layout_collapseMode="pin"
+                app:theme="@style/Toolbar">
+
+                <TextView
+                    android:id="@+id/ToolbarTitle"
+                    style="@style/ToolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/UserPage" />
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/gender_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="성별"
+            android:textSize="20dp"
+            android:layout_gravity="fill_horizontal" />
+        <RadioGroup
+            android:id="@+id/gender_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/male_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="남자" />
+
+            <RadioButton
+                android:id="@+id/female_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여자" />
+            <RadioButton
+                android:id="@+id/nogender_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="선택X" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/location_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="국내/외"
+            android:textSize="20dp"
+            android:padding="16dp"
+            android:layout_gravity="fill_horizontal" />
+        <RadioGroup
+            android:id="@+id/location_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/domestic_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="국내" />
+
+            <RadioButton
+                android:id="@+id/abroad_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="국외" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/date_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="날짜"
+            android:textSize="20dp"
+            android:layout_gravity="fill_horizontal" />
+        <EditText
+            android:id="@+id/start_date"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="여행일자"
+            android:focusable="false"/>
+
+        <TextView
+            android:id="@+id/child_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="아이 유무"
+            android:textSize="20dp"
+            android:layout_gravity="fill_horizontal" />
+        <RadioGroup
+            android:id="@+id/child_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/child"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="있음" />
+            <RadioButton
+                android:id="@+id/nochild"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="없음" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="저장" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
