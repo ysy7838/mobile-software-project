@@ -1,5 +1,6 @@
 package com.example.mobilesoftware_project
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +9,10 @@ import com.example.mobilesoftware_project.databinding.FragmentCheckRecyclerviewI
 class FragmentRecyclerTwoAdapter(val checkboxList: ArrayList<ClassCheckStatus>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun getItemCount(): Int = checkboxList?.size ?: 0
+    override fun getItemCount(): Int {
+        Log.d("checkboxlist", "${checkboxList.size}")
+        return checkboxList?.size ?: 0
+    }
 
     inner class FragmentRecyclerTwoHolder(val binding: FragmentCheckRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
