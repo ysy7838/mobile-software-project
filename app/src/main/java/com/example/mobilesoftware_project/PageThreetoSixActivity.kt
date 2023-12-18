@@ -1,14 +1,23 @@
 package com.example.mobilesoftware_project
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.example.mobilesoftware_project.databinding.PageThreeMainBinding
+import org.json.JSONArray
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.ArrayList
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 
 private const val CHECK = 0         // 프래그먼트를 선택할 때 사용하기 위해 선언
 private const val SCHEDULE = 1
@@ -45,6 +54,49 @@ class PageThreetoSixActivity : AppCompatActivity() {
         val tripEnd = intent.getStringExtra("tripEnd")
         val haveChild = intent.getBooleanExtra("haveChild", false)
 
+        /*
+        var calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+
+        val date = Date()
+        Log.d("exchangecheck", "${dateFormat.format(date)}")
+        val dateList : MutableList<SimpleDateFormat> = mutableListOf()
+
+        val networkService : RetrofitInterface = RetrofitConnection.getInstance().create(RetrofitInterface::class.java)
+        val getResult : Call<List<ClassExchange>> = networkService.doGetResult("YvYaRkYwmbIoYa2LQOqGWO0JWJyyiN3R", "$dateFormat.format(date)", "AP01")
+        getResult.enqueue(object: Callback<List<ClassExchange>> {
+            override fun onResponse(call: Call<List<ClassExchange>>, response: Response<List<ClassExchange>>) {
+                Log.d("exchangecheck", "Success")
+                val getList = response.body()
+                Log.d("exchangecheck", "${getList}")
+            }
+            override fun onFailure(call: Call<List<ClassExchange>>, t: Throwable) {
+                call.cancel()
+                Log.d("exchangecheck", "t.message = ${t.message}")
+                Log.d("exchangecheck", "t.cause = ${t.cause}")
+            }
+        })
+
+        val exchangeTotal = arrayListOf<dateExchange>()
+        val country = arrayListOf<ClassExchange>()
+
+        val jsonString = assets.open("ExchangeData.json").reader().readText()
+        val jsonArray = JSONArray(jsonString)
+        for (i in 0 until jsonArray.length()) {
+            val jsonObject = jsonArray.getJSONObject(i)
+            val unit = jsonObject.getString("cur_unit")
+            val deal = (jsonObject.getString("deal_bas_r")).toDouble()
+            val name = jsonObject.getString("cur_nm")
+
+            country.add(ClassExchange(unit, deal, name))
+            Log.d("exchangecheck", "$country")
+        }
+        exchangeTotal.add(dateExchange("2023.12.01", country))
+        Log.d("exchangecheck", "$country")
+
+         */
+
+
         initBottomNavigation()
 
         var bundle = Bundle()
@@ -58,7 +110,6 @@ class PageThreetoSixActivity : AppCompatActivity() {
         fragmentCheck!!.arguments = bundle
         supportFragmentManager!!.beginTransaction()
             .commit()
-
     }
 
     fun initBottomNavigation() {
