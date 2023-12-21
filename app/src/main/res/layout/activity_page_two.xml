@@ -42,12 +42,14 @@
             android:padding="16dp"
             android:text="성별"
             android:textSize="20dp"
-            android:layout_gravity="fill_horizontal" />
+            android:layout_gravity="fill_horizontal"
+            android:textStyle="bold"/>
         <RadioGroup
             android:id="@+id/gender_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingStart="20dp">
             <RadioButton
                 android:id="@+id/male_button"
                 android:layout_width="wrap_content"
@@ -73,12 +75,14 @@
             android:text="국내/외"
             android:textSize="20dp"
             android:padding="16dp"
-            android:layout_gravity="fill_horizontal" />
+            android:layout_gravity="fill_horizontal"
+            android:textStyle="bold"/>
         <RadioGroup
             android:id="@+id/location_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingStart="20dp">
 
             <RadioButton
                 android:id="@+id/domestic_button"
@@ -100,13 +104,16 @@
             android:padding="16dp"
             android:text="날짜"
             android:textSize="20dp"
-            android:layout_gravity="fill_horizontal" />
+            android:layout_gravity="fill_horizontal"
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/date_range"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="여행일자"
-            android:focusable="false"/>
+            android:focusable="false"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"/>
 
         <TextView
             android:id="@+id/child_txt"
@@ -115,12 +122,14 @@
             android:padding="16dp"
             android:text="아이 유무"
             android:textSize="20dp"
-            android:layout_gravity="fill_horizontal" />
+            android:layout_gravity="fill_horizontal"
+            android:textStyle="bold"/>
         <RadioGroup
             android:id="@+id/child_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingStart="20dp">
             <RadioButton
                 android:id="@+id/child"
                 android:layout_width="wrap_content"
@@ -137,6 +146,7 @@
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="저장" />
+            android:text="저장"
+            android:layout_margin="20dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

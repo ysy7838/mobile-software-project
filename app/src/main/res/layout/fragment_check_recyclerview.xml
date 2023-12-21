@@ -17,10 +17,15 @@
     <TextView
         android:id="@+id/checkTitle"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
         android:text="이름"
-        android:background="@color/subDiscription"
-        android:layout_gravity="center_vertical"/>
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:background="#c3c3c3"
+        android:layout_gravity="center_horizontal"
+        />
 
     <!-- 리사이클러뷰-->
     <androidx.recyclerview.widget.RecyclerView

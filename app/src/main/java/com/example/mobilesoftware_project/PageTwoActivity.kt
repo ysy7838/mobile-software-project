@@ -11,6 +11,10 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.widget.Toolbar
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -27,7 +31,13 @@ class PageTwoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)       // 뒤로 가기 버튼을 만듦
 
         val sharedPreferences = getSharedPreferences("PREFS", MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
+        //val editor2 = sharedPreferences.edit()
+        val editor = mutableMapOf<String, Any>()
+
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+        val colRef : CollectionReference = db.collection("travels")
+        //val docRef: Task<DocumentReference> = colRef.add()
+
 
         // DatePickers 설정
         val dateRange = findViewById<EditText>(R.id.date_range)
@@ -40,8 +50,8 @@ class PageTwoActivity : AppCompatActivity() {
                     val startDateString = convertLongToTime(dates.first)
                     val endDateString = convertLongToTime(dates.second)
                     dateRange.setText("$startDateString - $endDateString")
-                    editor.putString("start_date", startDateString)
-                    editor.putString("end_date", endDateString)
+                    editor.put("start_date", startDateString)
+                    editor.put("end_date", endDateString)
                 }
             }
         }
@@ -64,15 +74,20 @@ class PageTwoActivity : AppCompatActivity() {
             val selectedChildId = childGroup.checkedRadioButtonId
             val childButton = findViewById<RadioButton>(selectedChildId)
             val child = childButton.text.toString()
+            var haveChild = true
+            if (child == "있음") haveChild = true
+            else haveChild = false
 
             // 정보 저장
-            editor.putString("gender", gender)
-            editor.putString("location", location)
-            editor.putString("child", child)
-            editor.apply()
+            editor.put("gender", gender)
+            editor.put("location", location)
+            editor.put("child", haveChild)
 
+
+            val passArray = arrayOf(editor)
             // ChooseActivity로 이동
             val intent = Intent(this, ChooseActivity::class.java)
+
             startActivity(intent)
         }
     }

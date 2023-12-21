@@ -21,6 +21,7 @@
         style="@style/CheckList"
         />
 
+    <!--
     <ImageButton
         android:id="@+id/checklist_delete"
         android:layout_width="0dp"
@@ -31,5 +32,5 @@
         android:src="@drawable/checklist_delete"
         android:contentDescription="@string/checkDelete"
         style="@style/CheckDelete"/>
-
+        -->
 </LinearLayout>
