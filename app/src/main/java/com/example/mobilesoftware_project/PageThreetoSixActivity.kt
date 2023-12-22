@@ -30,6 +30,9 @@ var fragmentExchangeRate: FragmentExchangeRate? = null
 class PageThreetoSixActivity : AppCompatActivity() {
 
     private lateinit var binding: PageThreeMainBinding
+    lateinit var myAPI: RetrofitInterface
+    val API = "dKurvWL03OjwAVoCM4KTQaINKfx4IjHm"
+    val dateExchange: ArrayList<dateExchange> = arrayListOf()
 
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +54,7 @@ class PageThreetoSixActivity : AppCompatActivity() {
         val exchangeTotal = arrayListOf<dateExchange>()
         val country = arrayListOf<ClassExchange>()
 
+        /*
         val jsonString = assets.open("ExchangeData.json").reader().readText()
         val jsonArray = JSONArray(jsonString)
         for (i in 0 until jsonArray.length()) {
@@ -63,9 +67,11 @@ class PageThreetoSixActivity : AppCompatActivity() {
             country.add(ClassExchange(unit, deal, name))
         }
         exchangeTotal.add(dateExchange("2023.12.01", country))
+         */
 
         var bundle = Bundle()
         bundle.putString("filename", filename)
+        //bundle.putSerializable("dateExchange", dateExchange)
         initBottomNavigation(bundle)
         fragmentCheck!!.arguments = bundle
 
