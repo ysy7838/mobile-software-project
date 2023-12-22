@@ -1,21 +1,23 @@
 package com.example.mobilesoftware_project
 
+import android.content.SharedPreferences
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobilesoftware_project.databinding.FragmentCheckRecyclerviewItemBinding
 
-class FragmentRecyclerTwoAdapter(val checkboxList: ArrayList<ClassCheckStatus>) :
+class FragmentRecyclerTwoAdapter(val checkboxList: ArrayList<ClassCheckStatus>, pref: SharedPreferences) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private val editor: SharedPreferences.Editor = pref.edit()
+
     override fun getItemCount(): Int {
-        return checkboxList?.size ?: 0
+        return checkboxList.size
     }
 
     inner class FragmentRecyclerTwoHolder(val binding: FragmentCheckRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
@@ -28,6 +30,11 @@ class FragmentRecyclerTwoAdapter(val checkboxList: ArrayList<ClassCheckStatus>) 
         return FragmentRecyclerTwoHolder(binding).also { holder ->
             binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
                 checkboxList.getOrNull(holder.adapterPosition)?.isChecked = isChecked
+                checkboxList.getOrNull(holder.adapterPosition)?.isChecked?.let {
+                    editor.putBoolean(checkboxList.getOrNull(holder.adapterPosition)?.id,
+                        it
+                    ).apply()
+                }
             }
         }
     }
