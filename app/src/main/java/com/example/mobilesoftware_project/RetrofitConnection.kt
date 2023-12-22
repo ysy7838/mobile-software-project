@@ -1,10 +1,11 @@
 package com.example.mobilesoftware_project
 
-//import retrofit2.Retrofit
-//import retrofit2.converter.gson.GsonConverterFactory
+import com.google.gson.GsonBuilder
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitConnection {
-    /*
+
 
     // 객체를 하나만 생성하는 싱글톤 패턴을 적용
     companion object {
@@ -12,6 +13,7 @@ class RetrofitConnection {
         private const val BASE_URL
         = "https://www.koreaexim.go.kr/site/program/financial/"
         private var INSTANCE: Retrofit? = null
+        private val gson = GsonBuilder().setLenient().create()
 
         fun getInstance(): Retrofit {
             if(INSTANCE == null) {  // null인 경우에만 생성
@@ -23,6 +25,4 @@ class RetrofitConnection {
             return INSTANCE!!
         }
     }
-
-     */
 }
