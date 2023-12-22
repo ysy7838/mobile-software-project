@@ -200,11 +200,29 @@
 
 
     <string-array name="spinner">
-        <item>KRW</item>
-        <item>USD</item>
+        <item>AED</item>
+        <item>AUD</item>
+        <item>BHD</item>
+        <item>BND</item>
+        <item>CAD</item>
+        <item>CHF</item>
+        <item>CNH</item>
+        <item>DKK</item>
         <item>EUR</item>
-        <item>CNY</item>
-        <item>JPY</item>
+        <item>GBP</item>
+        <item>HKD</item>
+        <item>IDR(100)</item>
+        <item>JPY(100)</item>
+        <item>KRW</item>
+        <item>KWD</item>
+        <item>MYR</item>
+        <item>NOK</item>
+        <item>NZD</item>
+        <item>SAR</item>
+        <item>SEK</item>
+        <item>SGD</item>
+        <item>THB</item>
+        <item>USD</item>
     </string-array>
 
 
