@@ -1,11 +1,8 @@
 package com.example.mobilesoftware_project
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.GridLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobilesoftware_project.databinding.ActivityChooseBinding
 import com.google.android.material.chip.Chip
@@ -23,13 +20,14 @@ class ChooseActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)       // 뒤로 가기 버튼을 만듦
 
         val filename = intent.getStringExtra("filename")
+        //val dateExchange = intent.getStringArrayListExtra("dateExchange")
+        //Log.d("dateExchange", "dateExchange: $dateExchange")
         val sharedPreferences = getSharedPreferences("$filename", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
         // 저장버튼을 누를 시
         binding.saveButton.setOnClickListener {
             val selectedBasic = listOf<String>("기본 물품", "관리 용품")
-            //getSelectedChipsText(binding.chipGroupBasic)
             val selectedPurpose = getSelectedChipsText(binding.chipGroupPurpose)
             val selectedSports = getSelectedChipsText(binding.chipGroupSports)
             val selectTotal = selectedBasic + selectedPurpose + selectedSports

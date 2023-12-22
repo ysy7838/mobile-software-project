@@ -8,11 +8,10 @@ import com.google.gson.annotations.SerializedName
 
 class dateExchange(
     val date: String,
-    val results: MutableList<ClassExchange>
+    val results: List<ClassExchange>
 )
 
 data class ClassExchange (
-    //@SerializedName("result") val result : String,
     @SerializedName("cur_unit") val unit: String,
     //@SerializedName("ttb") val ttb : Double?,
     //@SerializedName("tts") val tts : Double?,

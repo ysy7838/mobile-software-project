@@ -6,57 +6,57 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobilesoftware_project.databinding.PageOneMainBinding
-import com.google.firebase.firestore.FirebaseFirestore
-import android.content.Context
-import android.content.SharedPreferences
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import android.view.Menu
+import android.view.MenuItem
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.io.File
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.util.Calendar
-import java.util.Date
 
 class PageOneActivity : AppCompatActivity() {
 
     var fileNum = 0
     val fileNameArray = arrayListOf<String>()
-    lateinit var myAPI : RetrofitInterface
+    private var auth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {                // 액티비티 시작
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_one_main)
+        auth = Firebase.auth
 
+        /*
         var calendar = Calendar.getInstance()
         calendar.time = Date()
         val dateFormat = SimpleDateFormat("yyyyMMdd")
 
-        calendar.add(Calendar.HOUR_OF_DAY, 9)
-        calendar.add(Calendar.DATE, -1)
-
         Log.d("exchangecheck", dateFormat.format(calendar.time))
         myAPI = RetrofitConnection.getInstance().create(RetrofitInterface::class.java)
 
-        Runnable {
-            myAPI
-                .doGetResult("YvYaRkYwmbIoYa2LQOqGWO0JWJyyiN3R",
-                    dateFormat.format(calendar.time), "AP01")
-                .enqueue(object : Callback<List<ClassExchange>> {
+        var cnt = 0
+        for (i in 0 until 2) {
+            val myDate = dateFormat.format(calendar.time)
+            Log.d("exchangecheck", "calendar.time, $myDate")
 
+            myAPI
+                .doGetResult(API, myDate, "AP01")
+                .enqueue(object : Callback<List<ClassExchange>> {
                     override fun onFailure(call: Call<List<ClassExchange>>, t: Throwable) {
                         Log.d("exchangecheck", "통신 실패: ${t.message}")
                     }
+                    override fun onResponse(call: Call<List<ClassExchange>>, response: Response<List<ClassExchange>>) {
+                        //Log.d("exchangecheck", "통신 성공 respponse: ${response.body()}")
 
-                    override fun onResponse(
-                        call: Call<List<ClassExchange>>,
-                        response: Response<List<ClassExchange>>
-                    ) {
-                        Log.d("exchangecheck", "통신 성공: ${response.body()}")
+                        if (response.body() != null) {
+                            dateExchange.add(dateExchange(myDate, response.body()!!))
+                            Log.d("exchangecheck", "통신 성공 dateExchange: ${dateExchange[cnt].date}, ${dateExchange[cnt].results}")
+                            cnt += 1
+                        }
                     }
                 })
-        }.run()
+            calendar.add(Calendar.DAY_OF_MONTH, -1)
+        }
+
+         */
 
         /*
         val binding = PageOneMainBinding.inflate(layoutInflater)
@@ -123,8 +123,10 @@ class PageOneActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)             // toolbar 기본 타이틀 안 보이게 -> textView로 따로 처리
 
+
         while (true) {
-            val filePath = "/data/data/com.example.mobilesoftware_project/shared_prefs/travel$fileNum.xml"
+            val filePath =
+                "/data/data/com.example.mobilesoftware_project/shared_prefs/travel$fileNum.xml"
             val file = File(filePath)
             if (isFileExists(file) && !fileNameArray.contains("travel${fileNum}")) {
                 fileNameArray.add("travel${fileNum}")
@@ -134,14 +136,36 @@ class PageOneActivity : AppCompatActivity() {
         binding.TripListRecycler.layoutManager = LinearLayoutManager(this)
         binding.TripListRecycler.adapter = PageOneAdapter(fileNameArray)         // 값을 저장한 리스트를 넘겨줌
 
-        binding.fabAddTrip.setOnClickListener{      // + 버튼 누르면 새 액티비티로 전환 -> 2번쨰 액티비티로 수정해야 함
+        binding.fabAddTrip.setOnClickListener {
             val intent = Intent(this, PageTwoActivity::class.java)
             intent.putExtra("filename", "travel${fileNum}")
             startActivity(intent)
         }
     }
 
-    fun isFileExists (file : File) : Boolean {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {            // 메뉴를 만드는 함수
+        val inflater = menuInflater
+        inflater.inflate(
+            R.menu.menu_logout,
+            menu
+        )                    // menu/more_menu_top.xml의 내용을 표시
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {       // 툴바에 있는 게 선택 되었을 때
+
+        when (item.itemId) {
+            R.id.topMenu_logout -> {
+                auth?.signOut()
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
+        return true
+    }
+
+    fun isFileExists(file: File): Boolean {
         return file.exists() && !file.isDirectory
     }
+
 }
