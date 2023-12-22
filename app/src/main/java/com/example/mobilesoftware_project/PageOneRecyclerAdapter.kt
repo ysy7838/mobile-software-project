@@ -1,6 +1,8 @@
 package com.example.mobilesoftware_project
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobilesoftware_project.databinding.TripRecyclerviewBinding
 import com.example.mobilesoftware_project.databinding.TripRecyclerviewEmptyBinding
+import org.json.JSONObject
 
 /*
 참고 velog - [Android/Kotlin] Recyclerview Header 달기 + 데이터가 없을 때 보여줄 화면 다르게 하기
@@ -23,14 +26,14 @@ class PageOneViewHolder(val binding: TripRecyclerviewBinding) :         // 리�
     RecyclerView.ViewHolder(binding.root)
 
 // 시작 페이지 어뎁터
-class PageOneAdapter(val tripList: MutableList<ClassTrip>) :
+class PageOneAdapter(val fileNameArray: ArrayList<String>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int {                              // 아이템이 몇 개인지 반환하는 함수
-        return if (tripList.size == 0) EMPTY else tripList.size     // 0이면 종료되기 때문에 +1해서 반환
+        return if (fileNameArray.size == 0) EMPTY else fileNameArray.size     // 0이면 종료되기 때문에 +1해서 반환
     }
     override fun getItemViewType(position: Int): Int {              // 아이템 개수에 따라서 viewType 반환
-        return if (tripList.size != 0) ITEM
+        return if (fileNameArray.size != 0) ITEM
         else EMPTY
     }
 
@@ -69,13 +72,27 @@ class PageOneAdapter(val tripList: MutableList<ClassTrip>) :
             is PageOneEmptyHolder -> {}                      // 아이템 없으면 연결할 필요 X
             is PageOneViewHolder -> {                       // 아이템 있으면 각각 연결하기
                 val binding = holder.binding
-                binding.tripListCountry.text = tripList[position].destination     // 텍스트를 받아와서 화면에 표시
-                binding.tripStart.text = tripList[position].tripStart
-                binding.tripEnd.text = tripList[position].tripEnd
+                val pref : SharedPreferences = holder.itemView.context.getSharedPreferences(fileNameArray[position], Context.MODE_PRIVATE)
 
+                binding.tripListCountry.text = pref.getString("destination", "null")
+                binding.tripStart.text = pref.getString("tripStart", "null")
+                binding.tripEnd.text = pref.getString("tripEnd", "null")
+
+                val intent = Intent(holder.itemView.context, PageThreetoSixActivity::class.java)       // 목록이랑 연결
+                val hash : MutableMap<String, Boolean> = mutableMapOf()
+                hash["movie"] = true
+                hash["music"] = true
+
+
+                var sharedStr = pref.getString("KEY", "")
+                var result = ""
+                if (sharedStr != "") {
+                    var obj = JSONObject(sharedStr)
+                }
+
+                //https://kong-droid.com/38
                 holder.itemView.setOnClickListener {
-                    val intent = Intent(holder.itemView.context, PageThreetoSixActivity::class.java)       // 목록이랑 연결
-
+                    /*
                     val activityIndex = arrayListOf<String>()
                     val activityValue = arrayListOf<String>()
 
@@ -83,19 +100,11 @@ class PageOneAdapter(val tripList: MutableList<ClassTrip>) :
                         activityIndex.add(key)
                         activityValue.add(value.toString())
                     }
-                    //val activity: Array<Pair<String, Boolean>> = tripList[position].activity.toList().toTypedArray()
-                    //val activityIndex = arrayOf("basic", "bicycle", "camping", "hiking", "photo", "running", "swimming", "winterSports", "work")
-                    intent.putExtra("activityIndex", activityIndex)
-                    intent.putExtra("activityValue", activityValue)
-                    intent.putExtra("sex", tripList[position].sex)
-                    intent.putExtra("destination", tripList[position].destination)
-                    intent.putExtra("isDomestic", tripList[position].isDomestic)
-                    intent.putExtra("isInternational", tripList[position].isInternational)
-                    intent.putExtra("tripStart", tripList[position].tripStart)
-                    intent.putExtra("tripEnd", tripList[position].tripEnd)
-                    intent.putExtra("haveChild", tripList[position].haveChild)
 
-                    ContextCompat.startActivity(holder.itemView.context, intent, null)             // 참고: 참고: https://kumgo1d.tistory.com/44
+                     */
+
+                    intent.putExtra("filename", fileNameArray[position])
+                    ContextCompat.startActivity(holder.itemView.context, intent, null)             // 참고:https://kumgo1d.tistory.com/44
                 }
             }
         }
