@@ -92,17 +92,6 @@ class PageOneAdapter(val fileNameArray: ArrayList<String>) :
 
                 //https://kong-droid.com/38
                 holder.itemView.setOnClickListener {
-                    /*
-                    val activityIndex = arrayListOf<String>()
-                    val activityValue = arrayListOf<String>()
-
-                    tripList[position].activity.forEach {key, value ->
-                        activityIndex.add(key)
-                        activityValue.add(value.toString())
-                    }
-
-                     */
-
                     intent.putExtra("filename", fileNameArray[position])
                     ContextCompat.startActivity(holder.itemView.context, intent, null)             // 참고:https://kumgo1d.tistory.com/44
                 }
