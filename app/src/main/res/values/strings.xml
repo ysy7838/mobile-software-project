@@ -42,5 +42,5 @@
     <string name="CheckActivate">"체크된 항목 숨기기"</string>
     <string name="TripEdit">"여행 편집"</string>
     <string name="TripDelete">"여행 삭제"</string>
-
+    <string name="Logout">"로그아웃"</string>
 </resources>
