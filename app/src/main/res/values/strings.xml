@@ -7,17 +7,25 @@
     <string name="EmptyView">여행 계획이 없습니다.</string>
 
     <!-- pageTwo의 ChooseAcitvity 관련 String -->
-    <string name="job">업무</string>
-    <string name="explore">답사</string>
-    <string name="photo">사진여행</string>
-    <string name="camping">캠핑</string>
-    <string name="religion">종교</string>
-    <string name="hocance">호캉스</string>
-    <string name="medic">의료</string>
-    <string name="volunteer">봉사활동</string>
-    <string name="shopping">쇼핑</string>
+    <string name="basic">기본 물품</string>
+    <string name="self_care">관리 용품</string>
 
-    <string name="swim">해변/수영</string>
+    <string name="job">업무</string>
+    <string name="medic">의료</string>
+    <string name="volunteer">봉사 활동</string>
+    <string name="photo">사진 여행</string>
+    <string name="camping">캠핑</string>
+    <string name="hocance">호캉스</string>
+    <!-- <string name="shopping">쇼핑</string> -->
+
+    <string name="swim">해변·수영</string>
+    <string name="running">달리기</string>
+    <string name="bicycle">자전거</string>
+    <string name="hiking">등산</string>
+    <string name="winterSports">겨울 스포츠</string>
+
+    <string name="makeError">모든 항목을 입력해주세요.</string>
+    <string name="cityError">올바른 여행지를 입력해주세요.</string>
 
     <!-- page Checklist 관련 String -->
     <string name="checkDelete">checkDelete</string>
