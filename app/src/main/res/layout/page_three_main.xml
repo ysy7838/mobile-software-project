@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/appbar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <!-- 뒤로가기 / 타이틀 / 더보기 메뉴 순으로 되어 있는 appbar -->
     <com.google.android.material.appbar.AppBarLayout
@@ -44,8 +45,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:itemIconTint="@drawable/menu_selector_color"
-        app:itemTextColor="@drawable/menu_selector_color"
+        app:itemIconTint="@drawable/selector_menu_color"
+        app:itemTextColor="@drawable/selector_menu_color"
+        android:background="@color/whiteGray"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/main_menu_bottom"/>

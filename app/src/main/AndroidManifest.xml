@@ -15,21 +15,24 @@
         android:theme="@style/Theme.Mobilesoftware_project"
         tools:targetApi="31">
         <activity
+            android:name=".PageOneActivity"
+            android:exported="true"></activity>
+        <activity
             android:name=".ChooseActivity"
             android:exported="false" />
         <activity
             android:name=".PageTwoActivity"
             android:exported="false" />
+        <activity android:name=".PageThreetoSixActivity" />
         <activity
-            android:name=".PageOneActivity"
+            android:name=".PageSplashScreen"
+            android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PageThreetoSixActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

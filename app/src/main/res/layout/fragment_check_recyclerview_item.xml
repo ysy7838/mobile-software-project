@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/white">
 
     <CheckBox
         android:id="@+id/checkbox"
@@ -21,6 +22,7 @@
         style="@style/CheckList"
         />
 
+    <!--
     <ImageButton
         android:id="@+id/checklist_delete"
         android:layout_width="0dp"
@@ -31,5 +33,5 @@
         android:src="@drawable/checklist_delete"
         android:contentDescription="@string/checkDelete"
         style="@style/CheckDelete"/>
-
+        -->
 </LinearLayout>

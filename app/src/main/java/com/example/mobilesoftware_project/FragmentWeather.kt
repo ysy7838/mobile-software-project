@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mobilesoftware_project.databinding.FragmentWeatherBinding
 import org.json.JSONObject
 import java.net.URL
@@ -20,12 +21,15 @@ import java.util.Locale
     날씨를 보여주는 Fragment
  */
 class FragmentWeather : Fragment() {
-    val CITY: String = "paris,fr"
     val API: String = "82374dc381666f1f98add3b5532e5714" // openweather API KEY
     private lateinit var button: View
+    private lateinit var CITY : String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_weather, container, false)
+        val filename = arguments?.getString("filename")
+        val pref = requireContext().getSharedPreferences("$filename", AppCompatActivity.MODE_PRIVATE)
+        CITY = pref.getString("destination", "Korea").toString()
 
         weatherTask(view).execute()
 
@@ -48,7 +52,10 @@ class FragmentWeather : Fragment() {
                     Charsets.UTF_8
                 )
             }catch (e: Exception){
-                response = null
+                response = URL("https://api.openweathermap.org/data/2.5/weather?q=Seoul&units=metric&appid=$API").
+                readText(
+                    Charsets.UTF_8
+                )
             }
             return response
         }

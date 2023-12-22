@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
     <!-- 뒤로가기 / 타이틀 / 더보기 메뉴 순으로 되어 있는 appbar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -32,134 +33,138 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/purpose_txt"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="여행목적" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-    <GridLayout
-        android:id="@+id/chipGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:padding="10dp">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip1"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
+        <!--
+        <TextView
+            android:id="@+id/basic_txt"
+            style="@style/activityCategory"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:text="@string/job" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
+            android:text="기본 목록" />
+        <GridLayout
+            android:id="@+id/chipGroup_basic"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:text="@string/explore" />
+            android:columnCount="3">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/basic"
+                app:checkedIconTint="@color/clickBlue"
+                style="@style/activityChip"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/self_care"
+                style="@style/activityChip"/>
+        </GridLayout>
+        -->
+
+        <TextView
+            android:id="@+id/purpose_txt"
+            style="@style/activityCategory"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:text="@string/photo" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip4"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
+            android:text="여행 목적" />
+        <GridLayout
+            android:id="@+id/chipGroup_purpose"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:text="@string/camping" />
+            android:columnCount="3">
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/job"
+                style="@style/activityChip"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip4"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/medic"
+                style="@style/activityChip"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip5"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/volunteer"
+                style="@style/activityChip"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip6"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/photo"
+                style="@style/activityChip"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip7"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/camping"
+                style="@style/activityChip"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip8"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/hocance"
+                style="@style/activityChip"/>
+        </GridLayout>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip5"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
+        <TextView
+            android:id="@+id/sports_txt"
+            style="@style/activityCategory"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:text="@string/religion" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip6"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
+            android:text="스포츠" />
+        <GridLayout
+            android:id="@+id/chipGroup_sports"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:text="@string/hocance" />
+            android:columnCount="3">
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip9"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/swim"
+                style="@style/activityChip"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip10"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/running"
+                style="@style/activityChip"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip11"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/bicycle"
+                style="@style/activityChip"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip12"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/hiking"
+                style="@style/activityChip"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip13"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/winterSports"
+                style="@style/activityChip"/>
+        </GridLayout>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip7"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:text="@string/medic" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip8"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:text="@string/volunteer" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip9"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:text="@string/shopping" />
-    </GridLayout>
-
-    <TextView
-        android:id="@+id/sports_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="스포츠" />
-    <GridLayout
-        android:id="@+id/chipGroup_sports"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:padding="10dp">
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip10"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:text="@string/swim" />
-
-    </GridLayout>
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="저장"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp" />
+            style="@style/saveButton"
+            android:text="저장" />
+    </LinearLayout>
 </LinearLayout>

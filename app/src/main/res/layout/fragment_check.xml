@@ -6,6 +6,7 @@
     android:id="@+id/checklist"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".FragmentCheck">
 
     <!-- 툴바 & 리사이클러뷰를 포함하는 내부 레이아웃 -->

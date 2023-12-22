@@ -25,12 +25,12 @@
         <item>안경</item>
         <item>안경 닦이</item>
 
+        <item>칫솔</item>
+        <item>치약</item>
         <item>귀마개</item>
         <item>안대</item>
     </string-array>
     <string-array name="self_care">
-        <item>칫솔</item>
-        <item>치약</item>
         <item>빗</item>
         <item>면봉</item>
         <item>헤어 드라이어</item>
@@ -56,82 +56,11 @@
         <item>목적지 전압 확인</item>
         <item>펜</item>
     </string-array>
-    <string-array name="bicycle">
-        <item>헬멧</item>
-        <item>자전거</item>
-        <item>자전거 상의</item>
-        <item>자전거 하의</item>
-        <item>자전거 신발</item>
-    </string-array>
-    <string-array name="camping">
-        <item>텐트</item>
-        <item>침낭</item>
-        <item>슬리핑 패드</item>
-        <item>베개</item>
 
-        <item>식기</item>
-        <item>조리 도구</item>
-        <item>캠핑 음식</item>
-        <item>과자</item>
-        <item>물 여과 장치</item>
-
-        <item>플래시</item>
-        <item>헤드 램프</item>
-        <item>장작</item>
-        <item>성냥/라이터</item>
-
-        <item>진드기 살충제</item>
-        <item>벌레 퇴치 스프레이</item>
-
-        <item>나침반</item>
-        <item>소형 GPS</item>
-        <item>타월</item>
-        <item>다용도 나이프</item>
-    </string-array>
-    <string-array name="hiking">
-        <item>등산화</item>
-        <item>물병</item>
-        <item>벌레 퇴치 스프레이</item>
-        <item>나침반</item>
-        <item>소형 GPS</item>
-    </string-array>
-    <string-array name="photo">
-        <item>카메라</item>
-        <item>삼각대</item>
-        <item>메모리 카드</item>
-        <item>카메라 충전기</item>
-        <item>카메라 가방</item>
-    </string-array>
-    <string-array name="running">
-        <item>런닝화</item>
-        <item>스포츠 양말</item>
-        <item>스포츠 바지</item>
-        <item>스포츠 셔츠</item>
-    </string-array>
-    <string-array name="swimming">
-        <item>수영복</item>
-        <item>비치 웨어</item>
-        <item>물안경</item>
-        <item>모자</item>
-        <item>여분 신발</item>
-        <item>여분 양말</item>
-        <item>여분 속옷</item>
-        <item>비치 타월</item>
-        <item>자외선 차단제</item>
-    </string-array>
-    <string-array name="winterSports">
-        <item>겨울 재킷</item>
-        <item>겨울 바지</item>
-        <item>겨울 모자/비니</item>
-        <item>겨울 장갑</item>
-        <item>내복</item>
-    </string-array>
-    <string-array name="work">
-        <item>사원증</item>
-        <item>명함</item>
-        <item>노트북</item>
-        <item>노트북 충전기</item>
-        <item>VPN</item>
+    <string-array name="female">
+        <item>피임약</item>
+        <item>생리대</item>
+        <item>탐폰</item>
     </string-array>
     <string-array name="haveChild">
         <item>아기 옷</item>
@@ -174,11 +103,102 @@
 
         <item>여행 동의서</item>
     </string-array>
-    <string-array name="female">
-        <item>피임약</item>
-        <item>생리대</item>
-        <item>탐폰</item>
+
+    <string-array name="job">
+        <item>사원증</item>
+        <item>명함</item>
+        <item>노트북</item>
+        <item>노트북 충전기</item>
+        <item>VPN</item>
     </string-array>
+    <string-array name="medic">
+        <item>필요한 물품1</item>
+        <item>필요한 물품2</item>
+        <item>필요한 물품3</item>
+    </string-array>
+    <string-array name="volunteer">
+        <item>필요한 물품1</item>
+        <item>필요한 물품2</item>
+        <item>필요한 물품3</item>
+    </string-array>
+    <string-array name="photo">
+        <item>카메라</item>
+        <item>삼각대</item>
+        <item>메모리 카드</item>
+        <item>카메라 충전기</item>
+        <item>카메라 가방</item>
+    </string-array>
+    <string-array name="camping">
+        <item>텐트</item>
+        <item>침낭</item>
+        <item>슬리핑 패드</item>
+        <item>베개</item>
+
+        <item>식기</item>
+        <item>조리 도구</item>
+        <item>캠핑 음식</item>
+        <item>과자</item>
+        <item>물 여과 장치</item>
+
+        <item>플래시</item>
+        <item>헤드 램프</item>
+        <item>장작</item>
+        <item>성냥/라이터</item>
+
+        <item>진드기 살충제</item>
+        <item>벌레 퇴치 스프레이</item>
+
+        <item>나침반</item>
+        <item>소형 GPS</item>
+        <item>타월</item>
+        <item>다용도 나이프</item>
+    </string-array>
+    <string-array name="hocance">
+        <item>필요한 물품1</item>
+        <item>필요한 물품2</item>
+        <item>필요한 물품3</item>
+    </string-array>
+
+    <string-array name="swim">
+        <item>수영복</item>
+        <item>비치 웨어</item>
+        <item>물안경</item>
+        <item>모자</item>
+        <item>여분 신발</item>
+        <item>여분 양말</item>
+        <item>여분 속옷</item>
+        <item>비치 타월</item>
+        <item>자외선 차단제</item>
+    </string-array>
+    <string-array name="running">
+        <item>런닝화</item>
+        <item>스포츠 양말</item>
+        <item>스포츠 바지</item>
+        <item>스포츠 셔츠</item>
+    </string-array>
+    <string-array name="bicycle">
+        <item>헬멧</item>
+        <item>자전거</item>
+        <item>자전거 상의</item>
+        <item>자전거 하의</item>
+        <item>자전거 신발</item>
+    </string-array>
+    <string-array name="hiking">
+        <item>등산화</item>
+        <item>물병</item>
+        <item>벌레 퇴치 스프레이</item>
+        <item>나침반</item>
+        <item>소형 GPS</item>
+    </string-array>
+    <string-array name="winterSports">
+        <item>겨울 재킷</item>
+        <item>겨울 바지</item>
+        <item>겨울 모자/비니</item>
+        <item>겨울 장갑</item>
+        <item>내복</item>
+    </string-array>
+
+
     <string-array name="spinner">
         <item>KRW</item>
         <item>USD</item>

@@ -2,12 +2,14 @@ package com.example.mobilesoftware_project
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobilesoftware_project.databinding.ActivityChooseBinding
 import com.google.android.material.chip.Chip
+import org.json.JSONArray
 
 class ChooseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChooseBinding
@@ -20,17 +22,35 @@ class ChooseActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)     // toolbar 기본 타이틀 안 보이게
         supportActionBar?.setDisplayHomeAsUpEnabled(true)       // 뒤로 가기 버튼을 만듦
 
+        val filename = intent.getStringExtra("filename")
+        val sharedPreferences = getSharedPreferences("$filename", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
 
         // 저장버튼을 누를 시
         binding.saveButton.setOnClickListener {
-            val selectedPurposes = getSelectedChipsText(binding.chipGroup)
+            val selectedBasic = listOf<String>("기본 물품", "관리 용품")
+            //getSelectedChipsText(binding.chipGroupBasic)
+            val selectedPurpose = getSelectedChipsText(binding.chipGroupPurpose)
             val selectedSports = getSelectedChipsText(binding.chipGroupSports)
+            val selectTotal = selectedBasic + selectedPurpose + selectedSports
 
-            Toast.makeText(this, "Selected Purposes: ${selectedPurposes.joinToString()}, Selected Sports: ${selectedSports.joinToString()}", Toast.LENGTH_SHORT).show()
+            val jsonArr = JSONArray()
+            for (i in selectTotal) {
+                jsonArr.put(i)
+            }
+            val result = jsonArr.toString()
 
-            // PageThreetoSixActivity로 이동
-            val intent = Intent(this, PageThreetoSixActivity::class.java)
-            startActivity(intent)
+            editor.putString("gender", intent.getStringExtra("gender"))
+            editor.putString("location", intent.getStringExtra("location"))
+            editor.putBoolean("haveChild", intent.getBooleanExtra("child", false))
+            editor.putString("tripStart", intent.getStringExtra("tripStart"))
+            editor.putString("tripEnd", intent.getStringExtra("tripEnd"))
+            editor.putString("destination", intent.getStringExtra("destination"))
+            editor.putString("activity", result)
+            editor.apply()
+
+            setResult(1000, intent)
+            finish()
         }
     }
     private fun getSelectedChipsText(chipGroup: GridLayout): List<String> {
@@ -44,65 +64,10 @@ class ChooseActivity : AppCompatActivity() {
         return selectedChips
     }
 
-    private fun setupChipGroup() {
-        binding.chip1.setOnCloseIconClickListener {
-            binding.chipGroup.removeView(it)
-            Toast
-                .makeText(this, "Removed 1st Chip", Toast.LENGTH_SHORT)
-                .show()
-        }
-        binding.chip2.setOnCloseIconClickListener {
-            binding.chipGroup.removeView(it)
-            Toast
-                .makeText(this, "Removed 2nd Chip", Toast.LENGTH_SHORT)
-                .show()
-        }
-        binding.chip3.setOnCloseIconClickListener {
-            binding.chipGroup.removeView(it)
-            Toast
-                .makeText(this, "Removed 3rd Chip", Toast.LENGTH_SHORT)
-                .show()
-        }
-        binding.chip4.setOnCloseIconClickListener {
-            binding.chipGroup.removeView(it)
-            Toast
-                .makeText(this, "Removed 4th Chip", Toast.LENGTH_SHORT)
-                .show()
-        }
-        binding.chip5.setOnCloseIconClickListener {
-            binding.chipGroup.removeView(it)
-            Toast
-                .makeText(this, "Removed 5th Chip", Toast.LENGTH_SHORT)
-                .show()
-        }
-        binding.chip6.setOnCloseIconClickListener {
-            binding.chipGroup.removeView(it)
-            Toast
-                .makeText(this, "Removed 6th Chip", Toast.LENGTH_SHORT)
-                .show()
-        }
-        binding.chip7.setOnCloseIconClickListener {
-            binding.chipGroup.removeView(it)
-            Toast
-                .makeText(this, "Removed 7th Chip", Toast.LENGTH_SHORT)
-                .show()
-        }
-        binding.chip8.setOnCloseIconClickListener {
-            binding.chipGroup.removeView(it)
-            Toast
-                .makeText(this, "Removed 4th Chip", Toast.LENGTH_SHORT)
-                .show()
-        }
-        binding.chip9.setOnCloseIconClickListener {
-            binding.chipGroup.removeView(it)
-            Toast
-                .makeText(this, "Removed 4th Chip", Toast.LENGTH_SHORT)
-                .show()
-        }
-    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {       // 툴바에 있는 게 선택 되었을 때
-        when (item.itemId) {                         // 뒤로가기 버튼이 선택되었을 때
-            android.R.id.home -> {                  // 여기에서 지금까지 한 거 저장하고 finish 해야 함
+        when (item.itemId) {                                            // 뒤로가기 버튼
+            android.R.id.home -> {
+                setResult(2000, intent)
                 finish()
                 return true
             }

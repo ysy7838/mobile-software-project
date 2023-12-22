@@ -39,6 +39,62 @@
             <item name="android:textSize">15sp</item>
         </style>
 
+    <!-- 2번째 페이지 관련 스타일 -->
+        <!-- PageTwo 관련 스타일 -->
+        <style name="dataTitle">
+            <item name="android:textSize">20sp</item>
+            <item name="android:layout_gravity">fill_horizontal</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:paddingTop">30dp</item>
+            <item name="android:paddingStart">30dp</item>
+            <item name="android:paddingBottom">10dp</item>
+        </style>
+
+        <style name="dataRadioGroup">
+            <item name="android:paddingStart">20dp</item>
+            <item name="android:paddingEnd">20dp</item>
+            <item name="android:orientation">horizontal</item>
+        </style>
+
+        <style name="dataDiscripton" parent="CustomRadioButton">
+            <item name="android:layout_weight">1</item>
+            <item name="android:padding">10dp</item>
+            <item name="android:textSize">15sp</item>
+        </style>
+
+        <style name="dataEditDiscripton" parent="CustomRadioButton">
+            <item name="android:layout_marginStart">20dp</item>
+            <item name="android:layout_marginEnd">20dp</item>
+            <item name="android:padding">10dp</item>
+            <item name="android:textSize">15sp</item>
+        </style>
+
+        <style name="CustomRadioButton" parent="Theme.AppCompat.Light">
+            <item name="colorAccent">@color/clickBlue</item>
+            <item name="colorControlNormal">@color/subDiscription</item>
+        </style>
+
+        <style name="saveButton">
+            <item name="android:layout_margin">25dp</item>
+            <item name="android:padding">10dp</item>
+            <item name="android:textSize">15sp</item>
+            <item name="android:textStyle">bold</item>
+            <item name="backgroundTint">@color/mainBlue</item>
+        </style>
+
+        <!-- Choose 관련 스타일 -->
+        <style name="activityCategory">
+            <item name="android:layout_margin">10dp</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textSize">18sp</item>
+            <item name="android:paddingTop">10dp</item>
+        </style>
+
+        <style name="activityChip" parent="Widget.MaterialComponents.Chip.Choice">
+            <item name="android:layout_margin">5dp</item>
+            <item name="android:textAlignment">center</item>
+        </style>
+
     <!-- 3번째 페이지 관련 스타일 -->
         <!-- 체크 리스트 텍스트에 적용되는 스타일 -->
             <style name="CheckList">

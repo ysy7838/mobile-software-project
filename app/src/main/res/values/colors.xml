@@ -6,5 +6,6 @@
     <color name="clickBlue">#5DADEC</color>
     <color name="bottomMenu_item_color">#1c39bb</color>
     <color name="subDiscription">#979797</color>
+    <color name="whiteGray">#f3f3f3</color>
     <color name="transparency">#00000000</color>
 </resources>

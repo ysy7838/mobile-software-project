@@ -2,6 +2,7 @@ package com.example.mobilesoftware_project
 
 import android.util.Log
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +14,9 @@ import java.util.ArrayList
 class FragmentCheckRecyclerHolder(val binding: FragmentCheckRecyclerviewBinding) :
     RecyclerView.ViewHolder(binding.root)
 
-class FragmentCheckRecyclerAdapter(val context: Context, val activityIndex: ArrayList<String>?, val classTotal: ArrayList<ClassCheckTotal>) :
+class FragmentCheckRecyclerAdapter(val context: Context, val totalArr: ArrayList<String>?,
+                                   val classTotal: ArrayList<ClassCheckTotal>, val pref: SharedPreferences
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -21,20 +24,23 @@ class FragmentCheckRecyclerAdapter(val context: Context, val activityIndex: Arra
     private val basicCheck = classTotal[0].statusList
     private val self_careCheck = classTotal[1].statusList
     private val isInternationalCheck = classTotal[2].statusList
-    private val bicycleCheck = classTotal[3].statusList
-    private val campingCheck = classTotal[4].statusList
-    private val hikingCheck = classTotal[5].statusList
-    private val photoCheck = classTotal[6].statusList
-    private val runningCheck = classTotal[7].statusList
-    private val swimmingCheck = classTotal[8].statusList
-    private val winterSportsCheck = classTotal[9].statusList
-    private val workCheck = classTotal[10].statusList
-    private val haveChildCheck = classTotal[11].statusList
-    private val femaleCheck = classTotal[12].statusList
 
-    lateinit var array: Array<String>
+    private val femaleCheck = classTotal[3].statusList
+    private val haveChildCheck = classTotal[4].statusList
 
-    override fun getItemCount(): Int = activityIndex?.size ?: 0
+    private val jobCheck = classTotal[5].statusList
+    private val medicCheck = classTotal[6].statusList
+    private val volunteerCheck = classTotal[7].statusList
+    private val photoCheck = classTotal[8].statusList
+    private val campingCheck = classTotal[9].statusList
+    private val hocanceCheck = classTotal[10].statusList
+
+    private val swimCheck = classTotal[11].statusList
+    private val runningCheck = classTotal[12].statusList
+    private val bicycleCheck = classTotal[13].statusList
+    private val hikingCheck = classTotal[14].statusList
+    private val winterSportsCheck = classTotal[15].statusList
+    override fun getItemCount(): Int = totalArr?.size ?: 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             RecyclerView.ViewHolder {
@@ -45,69 +51,63 @@ class FragmentCheckRecyclerAdapter(val context: Context, val activityIndex: Arra
         return FragmentCheckRecyclerHolder(binding)
     }
 
-    fun inputItem(array: Array<String>, checklist: ArrayList<ClassCheckStatus>) {
-        for (i in 0..array.size - 1) {
-            checklist.add(ClassCheckStatus(array[i], false))
-        }
-    }
-
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding = (holder as FragmentCheckRecyclerHolder).binding
-        binding.checkTitle.text = activityIndex?.get(position)
+        binding.checkTitle.text = totalArr?.get(position)
 
         // 중첩 체크리스트 내부 array 전달
-        when (activityIndex?.get(position)) {
-            "basic" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(basicCheck)
+        when (totalArr?.get(position)) {
+            "기본 물품" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(basicCheck, pref)
+            }
+            "관리 용품" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(self_careCheck, pref)
             }
 
-            "self_care" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(self_careCheck)
+            "여성 용품" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(femaleCheck, pref)
+            }
+            "해외 여행" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(isInternationalCheck, pref)
+            }
+            "아이 용품" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(haveChildCheck, pref)
             }
 
-            "isInternational" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(isInternationalCheck)
+            "업무" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(jobCheck, pref)
+            }
+            "의료" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(medicCheck, pref)
+            }
+            "봉사 활동" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(volunteerCheck, pref)
+            }
+            "사진 여행" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(photoCheck, pref)
+            }
+            "캠핑" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(campingCheck, pref)
+            }
+            "호캉스" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(hocanceCheck, pref)
             }
 
-            "bicycle" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(bicycleCheck)
-            }
 
-            "camping" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(campingCheck)
+            "해변·수영" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(swimCheck, pref)
             }
-
-            "hiking" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(hikingCheck)
+            "달리기" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(runningCheck, pref)
             }
-
-            "photo" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(photoCheck)
+            "자전거" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(bicycleCheck, pref)
             }
-
-            "running" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(runningCheck)
+            "등산" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(hikingCheck, pref)
             }
-
-            "swimming" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(swimmingCheck)
-            }
-
-            "winterSports" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(winterSportsCheck)
-            }
-
-            "work" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(workCheck)
-            }
-
-            "haveChild" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(haveChildCheck)
-            }
-
-            "female" -> {
-                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(femaleCheck)
+            "겨울 스포츠" -> {
+                binding.checkItem.adapter = FragmentRecyclerTwoAdapter(winterSportsCheck, pref)
             }
         }
         binding.checkItem.layoutManager = LinearLayoutManager(context)
