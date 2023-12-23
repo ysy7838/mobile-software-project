@@ -82,6 +82,12 @@
             <item name="backgroundTint">@color/mainBlue</item>
         </style>
 
+        <style name="loginButton">
+            <item name="android:textSize">15sp</item>
+            <item name="android:textStyle">bold</item>
+            <item name="backgroundTint">@color/mainBlue</item>
+        </style>
+
         <!-- Choose 관련 스타일 -->
         <style name="activityCategory">
             <item name="android:layout_margin">10dp</item>

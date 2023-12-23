@@ -30,7 +30,6 @@ class LoginActivity : Activity() {
         binding.gotoSignUp.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
-
     }
 
     public override fun onStart() {
@@ -67,7 +66,6 @@ class LoginActivity : Activity() {
         startActivity(Intent(this, PageOneActivity::class.java))
         finish()
     }
-
 }
 
 /*

@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="회원가입 하기" />
+                android:text="회원가입" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -34,35 +34,73 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/splashicon_airplane_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"
+                android:text="가입을 환영합니다."
+                android:textStyle="bold"/>
+        </LinearLayout>
 
         <EditText
             android:id="@+id/SignupEditID"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:hint="ID"
-            android:nextFocusDown="@id/SignupEditPW"
-            android:padding="20dp"
+            android:nextFocusDown="@id/loginPW"
             android:singleLine="true" />
 
         <EditText
             android:id="@+id/SignupEditPW"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:hint="Password"
-            android:nextFocusDown="@id/SignupButton"
-            android:padding="20dp"
-            android:singleLine="true"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:nextFocusDown="@id/loginButton"
+            android:singleLine="true" />
 
-        <Button
-            android:id="@+id/SignupButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="가입하기" />
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+
+            <Button
+                android:id="@+id/SignupButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/login_button"
+                style="@style/loginButton"
+                android:textColor="@color/white"
+                android:text="회원가입" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
