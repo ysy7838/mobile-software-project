@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.mobilesoftware_project.databinding.FragmentScheduleBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -51,6 +52,10 @@ class FragmentSchedule : Fragment(), OnMapReadyCallback {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_schedule, container, false)
+        val filename = arguments?.getString("filename")
+        val pref = requireContext().getSharedPreferences("$filename", AppCompatActivity.MODE_PRIVATE)
+        val route = pref.getString("route", "").toString()
+
 
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
