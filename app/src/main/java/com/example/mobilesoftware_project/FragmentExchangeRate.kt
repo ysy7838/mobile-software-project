@@ -17,24 +17,27 @@ import com.example.mobilesoftware_project.databinding.FragmentExchangeRateBindin
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.ArrayList
 import java.util.Calendar
 import java.util.Date
 
 /*
-    환율 계산기를 보여주는 Fragment
+    환율 계산기를 보여주는 Fragment - API 일일 횟수 마감 때문에 인증키 여러 개 생성
  */
-// 민희 인증키: YvYaRkYwmbIoYa2LQOqGWO0JWJyyiN3R
-// 서영 인증키: dKurvWL03OjwAVoCM4KTQaINKfx4IjHm
-//https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=YvYaRkYwmbIoYa2LQOqGWO0JWJyyiN3R&searchdate=20231201&data=AP01
+// 인증키1: YvYaRkYwmbIoYa2LQOqGWO0JWJyyiN3R
+// 인증키2: dKurvWL03OjwAVoCM4KTQaINKfx4IjHm
+// 인증키3: 29UAAIZdTKYL5O6oDE9MCWPs7wNn9fLW
+//https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=29UAAIZdTKYL5O6oDE9MCWPs7wNn9fLW&searchdate=20231222&data=AP01
 
 
 class FragmentExchangeRate : Fragment() {
 
     lateinit var eBinding: FragmentExchangeRateBinding
     lateinit var myAPI: RetrofitInterface
-    val API = "dKurvWL03OjwAVoCM4KTQaINKfx4IjHm"
+    val API = "29UAAIZdTKYL5O6oDE9MCWPs7wNn9fLW"
     val dateExchange: ArrayList<dateExchange> = arrayListOf()
 
     var change = 1.0
@@ -51,47 +54,44 @@ class FragmentExchangeRate : Fragment() {
         calendar.time = Date()
         val dateFormat = SimpleDateFormat("yyyyMMdd")
         val printFormat = SimpleDateFormat("yyyy년 MM월 dd일")
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.DOWN
 
-        Log.d("exchangecheck", dateFormat.format(calendar.time))
         myAPI = RetrofitConnection.getInstance().create(RetrofitInterface::class.java)
-
-        var flag = 0
+        var coupleMap = mutableMapOf<String, Double>()
 
         val myDate = dateFormat.format(calendar.time)
+        Log.d("exchangecheck", myDate)
         myAPI
             .doGetResult(API, myDate, "AP01")
             .enqueue(object : Callback<List<ClassExchange>> {
                 override fun onFailure(call: Call<List<ClassExchange>>, t: Throwable) {
                     Log.d("exchangecheck", "통신 실패: ${t.message}")
                 }
-
-                override fun onResponse(
-                    call: Call<List<ClassExchange>>,
-                    response: Response<List<ClassExchange>>
-                ) {
+                override fun onResponse(call: Call<List<ClassExchange>>, response: Response<List<ClassExchange>>) {
                     if (response.body() != null) {
                         dateExchange.add(dateExchange(myDate, response.body()!!))
-                        Log.d("exchangecheck", "통신 성공 dateExchange: ${dateExchange[0].date}, ${dateExchange[0].results}")
-                        flag = 1
+                        val list = dateExchange[0].results
+                        for (i in list) {
+                            if (i.unit == "IDR(100)" || i.unit == "JPY(100)") {
+                                i.deal?.let { coupleMap.put(i.unit, it.replace(",", "").toDouble()/100) }
+                            } else {
+                                i.deal?.let { coupleMap.put(i.unit, it.replace(",", "").toDouble()) }
+                            }
+                        }
+                        Log.d("exchangecheck", "coupleMap: $coupleMap")
                     } else {
-                        calendar.add(Calendar.DAY_OF_MONTH, -1)
+                        Log.d("exchangecheck", "통신 성공 dateExchange but null")
                     }
                 }
             })
 
-        val testlist : List<ClassExchange> = listOf(ClassExchange(unit="AED", deal="351.37", name="아랍에미리트 디르함"))
-        dateExchange.add(dateExchange(myDate, testlist))
-
-        val list = dateExchange[0].results
-        val coupleMap = mutableMapOf<String, Double>()
-        for (i in list) {
-            if (i.unit == "IDR(100)" || i.unit == "JPY(100)") {
-                i.deal?.let { coupleMap.put("${i.unit}", it.toDouble()/100) }
-            } else {
-                i.deal?.let { coupleMap.put("${i.unit}", it.toDouble()) }
-            }
+        if (coupleMap.isEmpty()) {
+            val errorMap = mutableMapOf("AED" to 354.01, "AUD" to 875.68, "BHD" to 3448.9, "BND" to 976.09, "CAD" to 973.24, "CHF" to 1507.48, "CNH" to 182.1, "DKK" to 190.84,
+                "EUR" to 1422.94, "GBP" to 1643.13, "HKD" to 166.53, "IDR(100)" to 0.08380000000000001, "JPY(100)" to 9.0635, "KRW" to 1.0, "KWD" to 4225.27,
+                "MYR" to 279.13, "NOK" to 125.69, "NZD" to 812.95, "SAR" to 346.67, "SEK" to 127.87, "SGD" to 976.09, "THB" to 37.16, "USD" to 1300.2)
+            coupleMap = errorMap
         }
-
 
         val spinnerChange: Spinner = eBinding.beExchangedSelect
         context?.let {
@@ -108,11 +108,8 @@ class FragmentExchangeRate : Fragment() {
         spinnerChange.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selected = parent.getItemAtPosition(position).toString()
-                for ((key, value) in coupleMap) {
-                    if (selected == key) {
-                        change = value
-                    } else change = 1.0
-                }
+                change = coupleMap[selected] ?: 1.0
+                Log.d("exchangecheck", "change 화폐: $change")
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
@@ -132,11 +129,8 @@ class FragmentExchangeRate : Fragment() {
         spinnerChanged.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selected = parent.getItemAtPosition(position).toString()
-                for ((key, value) in coupleMap) {
-                    if (selected == key) {
-                        changed = value
-                    } else changed = 1.0
-                }
+                changed = coupleMap[selected] ?: 1.0
+                Log.d("exchangecheck", "changed 화폐: $changed")
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
@@ -148,12 +142,10 @@ class FragmentExchangeRate : Fragment() {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        eBinding.exchangeChange.setOnClickListener {
-
+        eBinding.exchangeButton.setOnClickListener {
             var result = eBinding.exchange.text.toString().toDouble()
             var answer = result / change * changed
-
-            eBinding.beExchanged.text = answer.toString()
+            eBinding.beExchanged.text = df.format(answer).toString()
         }
 
         return eBinding.root

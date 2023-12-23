@@ -22,19 +22,23 @@
             android:id="@+id/today"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="12월 19일" />
+            android:text=""
+            android:layout_margin="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
             <EditText
                 android:id="@+id/exchange"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:hint="입력하는 곳"
-                android:inputType="number" />
+                android:hint="입력"
+                android:inputType="number"
+                android:paddingStart="10dp"
+                android:textSize="15sp"/>
 
             <Spinner
                 android:id="@+id/exchange_select"
@@ -43,20 +47,19 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-        <ImageButton
+        <ImageView
             android:id="@+id/exchange_change"
             style="@style/CheckDelete"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:contentDescription="@string/checkDelete"
-            android:gravity="center_vertical"
             android:padding="5dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/down_arrow" />
+            android:src="@drawable/down_arrow"
+            android:layout_margin="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
             <TextView
                 android:id="@+id/be_exchanged"
@@ -64,7 +67,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="나타나는 곳" />
+                android:paddingStart="10dp"
+                android:text="출력" />
 
             <Spinner
                 android:id="@+id/be_exchanged_select"
@@ -72,19 +76,16 @@
                 android:layout_height="48dp"
                 android:layout_weight="1" />
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/exchange_chart"
+        <Button
+            android:id="@+id/exchange_button"
             android:layout_width="match_parent"
-            android:layout_height="239dp"
-            android:background="@color/mainBlue" />
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="변환하기"
+            android:src="@drawable/down_arrow"
+            android:layout_margin="20dp"/>
 
     </LinearLayout>
 </LinearLayout>
