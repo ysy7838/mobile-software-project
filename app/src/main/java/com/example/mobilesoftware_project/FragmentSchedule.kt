@@ -108,40 +108,27 @@ class FragmentSchedule : Fragment(), OnMapReadyCallback {
 
         updateMarkers()
 
-        /* 데이터베이스에 저장
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("schedule")
-         */
-
         mMap.setOnMarkerClickListener { marker ->
             val builder = AlertDialog.Builder(requireContext())
             val inflater = layoutInflater
             val dialogLayout = inflater.inflate(R.layout.schedule_dialog, null)
             val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
 
-            /*
-            // 입력된 메모 불러오기
-            myRef.child(marker.id).addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val schedule = snapshot.getValue(String::class.java)
-                    editText.setText(schedule)
-                }
+            // SharedPreferences에서 마커의 타이틀에 해당하는 일정을 가져옵니다.
+            val schedulePref = requireContext().getSharedPreferences("Schedule", AppCompatActivity.MODE_PRIVATE)
+            val schedule = schedulePref.getString(marker.title, "")
+            editText.setText(schedule)
 
-                override fun onCancelled(error: DatabaseError) {
-                    // Error handling
-                }
-            })
-            */
             with(builder) {
                 setTitle("일정")
                 setPositiveButton("확인") { dialog, which ->
-                    val schedule = editText.text.toString()
-                    Toast.makeText(requireContext(), "저장된 메모: $schedule", Toast.LENGTH_LONG).show() //값이 잘 저장되었는지 확인
-                    /*
-                    val schedule = editText.text.toString()
-                    myRef.child(marker.id).setValue(schedule)
-                    // 입력한 메모를 저장
-                     */
+                    val newSchedule = editText.text.toString()
+                    // 마커의 타이틀을 키로 사용하여 새로운 일정을 SharedPreferences에 저장
+                    val editor = schedulePref.edit()
+                    editor.putString(marker.title, newSchedule)
+                    editor.apply()
+
+                    Toast.makeText(requireContext(), "저장된 메모: $newSchedule", Toast.LENGTH_LONG).show()
                 }
                 setNegativeButton("취소") { dialog, which ->
                     // 취소 버튼
