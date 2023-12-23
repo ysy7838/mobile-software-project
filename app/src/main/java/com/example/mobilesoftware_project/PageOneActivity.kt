@@ -25,40 +25,6 @@ class PageOneActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         /*
-        var calendar = Calendar.getInstance()
-        calendar.time = Date()
-        val dateFormat = SimpleDateFormat("yyyyMMdd")
-
-        Log.d("exchangecheck", dateFormat.format(calendar.time))
-        myAPI = RetrofitConnection.getInstance().create(RetrofitInterface::class.java)
-
-        var cnt = 0
-        for (i in 0 until 2) {
-            val myDate = dateFormat.format(calendar.time)
-            Log.d("exchangecheck", "calendar.time, $myDate")
-
-            myAPI
-                .doGetResult(API, myDate, "AP01")
-                .enqueue(object : Callback<List<ClassExchange>> {
-                    override fun onFailure(call: Call<List<ClassExchange>>, t: Throwable) {
-                        Log.d("exchangecheck", "통신 실패: ${t.message}")
-                    }
-                    override fun onResponse(call: Call<List<ClassExchange>>, response: Response<List<ClassExchange>>) {
-                        //Log.d("exchangecheck", "통신 성공 respponse: ${response.body()}")
-
-                        if (response.body() != null) {
-                            dateExchange.add(dateExchange(myDate, response.body()!!))
-                            Log.d("exchangecheck", "통신 성공 dateExchange: ${dateExchange[cnt].date}, ${dateExchange[cnt].results}")
-                            cnt += 1
-                        }
-                    }
-                })
-            calendar.add(Calendar.DAY_OF_MONTH, -1)
-        }
-
-         */
-
-        /*
         val binding = PageOneMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
