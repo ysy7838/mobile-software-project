@@ -41,7 +41,9 @@ class SignupActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Toast.makeText(this, "회원가입에 성공했습니다!", Toast.LENGTH_SHORT).show()
                     finish() // 가입창 종료
-                } else {
+                } else if (task.exception?.message.isNullOrEmpty()) {
+                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
+                } else{
                     // If sign in fails, display a message to the user.
                     Toast.makeText(this, "이미 존재하는 계정이거나, 회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 }
