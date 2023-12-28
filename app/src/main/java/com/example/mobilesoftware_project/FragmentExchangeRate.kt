@@ -143,7 +143,11 @@ class FragmentExchangeRate : Fragment() {
         })
 
         eBinding.exchangeButton.setOnClickListener {
-            var result = eBinding.exchange.text.toString().toDouble()
+            var result = 0.0
+            var num = eBinding.exchange.text.toString()
+            if (num != "") {
+                result = num.toDouble()
+            }
             var answer = result / change * changed
             eBinding.beExchanged.text = df.format(answer).toString()
         }
