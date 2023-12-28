@@ -15,9 +15,10 @@ import java.io.File
 
 class PageOneActivity : AppCompatActivity() {
 
-    var fileNum = 0
-    val fileNameArray = arrayListOf<String>()
+
     private var auth: FirebaseAuth? = null
+    private val path = "/data/data/com.example.mobilesoftware_project/shared_prefs/"
+    private var filename : String = "travel_F7956B2763E6FF1741381E063233BB4D3C512568_"
 
     override fun onCreate(savedInstanceState: Bundle?) {                // 액티비티 시작
         super.onCreate(savedInstanceState)
@@ -89,22 +90,34 @@ class PageOneActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)             // toolbar 기본 타이틀 안 보이게 -> textView로 따로 처리
 
-
-        while (true) {
-            val filePath =
-                "/data/data/com.example.mobilesoftware_project/shared_prefs/travel$fileNum.xml"
-            val file = File(filePath)
-            if (isFileExists(file) && !fileNameArray.contains("travel${fileNum}")) {
-                fileNameArray.add("travel${fileNum}")
-                fileNum += 1
-            } else break;
+        val fileNameArray = arrayListOf<String>()
+        val dir = File(path)
+        for (f in dir.listFiles()) {                                            // path 폴더에 있는 파일을 리스트화
+            if (f.getName().contains(filename)) {                               // file명에 filename이 들어있으면 array에 input
+                val input = f.getName().replace(".xml", "")    // file 이름 확장자 제거
+                fileNameArray.add(input)
+            }
         }
+
+        fileNameArray.sortDescending()
+        Log.d("filecheck", "$fileNameArray")
+
         binding.TripListRecycler.layoutManager = LinearLayoutManager(this)
-        binding.TripListRecycler.adapter = PageOneAdapter(fileNameArray)         // 값을 저장한 리스트를 넘겨줌
+        binding.TripListRecycler.adapter = PageOneAdapter(fileNameArray)
+
 
         binding.fabAddTrip.setOnClickListener {
             val intent = Intent(this, PageTwoActivity::class.java)
-            intent.putExtra("filename", "travel${fileNum}")
+            var nextFile: String
+
+            if (fileNameArray.isEmpty()) {      // 처음 여행 생성
+                nextFile = "00000"
+            } else {                            // 1, 2, 3, ... 이전에 가장 높은 숫자 + 1로 다음 여행 만듦
+                val splitArr = fileNameArray[0].split("_")
+                nextFile = "%05d".format((splitArr[2].toInt()) + 1)
+            }
+
+            intent.putExtra("filename", "$filename$nextFile")
             startActivity(intent)
         }
     }
@@ -129,9 +142,4 @@ class PageOneActivity : AppCompatActivity() {
         }
         return true
     }
-
-    fun isFileExists(file: File): Boolean {
-        return file.exists() && !file.isDirectory
-    }
-
 }
