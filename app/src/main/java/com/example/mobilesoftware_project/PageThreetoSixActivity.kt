@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobilesoftware_project.databinding.PageThreeMainBinding
 import java.util.ArrayList
@@ -17,6 +18,7 @@ import retrofit2.Response
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -26,6 +28,8 @@ var fragmentCheck: FragmentCheck? = null
 var fragmentSchedule: FragmentSchedule? = null
 var fragmentWeather: FragmentWeather? = null
 var fragmentExchangeRate: FragmentExchangeRate? = null
+
+private val path = "/data/data/com.example.mobilesoftware_project/shared_prefs/"
 
 class PageThreetoSixActivity : AppCompatActivity() {
 
@@ -163,6 +167,7 @@ class PageThreetoSixActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {       // 툴바에 있는 게 선택 되었을 때
+        val filename = intent.getStringExtra("filename")
 
         when (item.itemId) {
             android.R.id.home -> {                    // 뒤로가기 버튼이 선택되었을 때
@@ -180,9 +185,15 @@ class PageThreetoSixActivity : AppCompatActivity() {
             }
 
             R.id.topMenu_trip_delete -> {          // 활동을 삭제할 수 있도록
-                Log.d("incomplete", "trip_delete")
-
-                finish()
+                val file = File("$path$filename.xml")
+                Log.d("filecheck", "$file")
+                val result = file.delete()
+                if (result) {
+                    finish()
+                } else {
+                    Toast.makeText(this, R.string.Error, Toast.LENGTH_SHORT).show()
+                }
+                return true
             }
         }
         return super.onOptionsItemSelected(item)

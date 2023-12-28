@@ -29,7 +29,7 @@ class FragmentWeather : Fragment() {
         val view = inflater.inflate(R.layout.fragment_weather, container, false)
         val filename = arguments?.getString("filename")
         val pref = requireContext().getSharedPreferences("$filename", AppCompatActivity.MODE_PRIVATE)
-        CITY = pref.getString("destination", "Korea").toString()
+        CITY = pref.getString("destination", "Seoul").toString()
 
         weatherTask(view).execute()
 

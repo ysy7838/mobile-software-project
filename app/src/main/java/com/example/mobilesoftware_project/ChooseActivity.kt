@@ -20,8 +20,6 @@ class ChooseActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)       // 뒤로 가기 버튼을 만듦
 
         val filename = intent.getStringExtra("filename")
-        //val dateExchange = intent.getStringArrayListExtra("dateExchange")
-        //Log.d("dateExchange", "dateExchange: $dateExchange")
         val sharedPreferences = getSharedPreferences("$filename", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 

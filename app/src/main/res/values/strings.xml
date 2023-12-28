@@ -1,8 +1,23 @@
 <resources>
     <string name="app_name">mobilesoftware_project</string>     <!-- 나중에 이름 짓자 -->
 
+    <!-- Login & SignUp 관련 String -->
+    <string name="Login">로그인</string>
+    <string name="SignUp">회원가입</string>
+    <string name="Introduction">트윗미(Travel With Me) 에\n오신 것을 환영합니다.</string>
+    <string name="Welcome">가입을 환영합니다.</string>
+
+    <string name="LoginSuccess">로그인에 성공했습니다.</string>
+    <string name="LoginNeedMore">아이디와 혹은 비밀번호를 입력해주세요.</string>
+    <string name="LoginFail">아이디 혹은 비밀번호를 잘못 입력했습니다.</string>
+    <string name="Logout">로그아웃</string>
+
+    <string name="SignUpSuccess">회원가입에 성공했습니다.</string>
+    <string name="SignUpEmail">이메일 형식에 맞춰 입력해주세요.</string>
+    <string name="SignUpFail">이미 존재하는 계정이거나, 회원가입에 실패했습니다.</string>
+
     <!-- pageOne 관련 String -->
-    <string name="PageOneTitle">"시작하기"</string>
+    <string name="PageOneTitle">시작하기</string>
     <string name="AddTrip">여행 계획 추가</string>
     <string name="EmptyView">여행 계획이 없습니다.</string>
 
@@ -30,17 +45,19 @@
     <!-- page Checklist 관련 String -->
     <string name="checkDelete">checkDelete</string>
 
+
     <!-- page 3 ~ 6 관련 String -->
-    <string name="CheckPage">"여행 체크리스트"</string>
-    <string name="SchedulePage">"여행 계획"</string>
-    <string name="UserPage">"새로운 여행 시작"</string>
-    <string name="WeatherPage">"날씨"</string>
-    <string name="ExchangePage">"환율 계산기"</string>
-    <string name="Error">"오류가 발생하였습니다."</string>
+    <string name="CheckPage">여행 체크리스트</string>
+    <string name="SchedulePage">여행 계획</string>
+    <string name="UserPage">새로운 여행 시작</string>
+    <string name="WeatherPage">날씨</string>
+    <string name="ExchangePage">환율 계산기</string>
+    <string name="Error">오류가 발생하였습니다.</string>
+
 
     <!-- page 3 ~ 6 Menu 관련 String -->
-    <string name="CheckActivate">"체크된 항목 숨기기"</string>
-    <string name="TripEdit">"여행 편집"</string>
-    <string name="TripDelete">"여행 삭제"</string>
-    <string name="Logout">"로그아웃"</string>
+    <string name="CheckActivate">체크된 항목 숨기기</string>
+    <string name="TripEdit">여행 편집</string>
+    <string name="TripDelete">여행 삭제</string>
+
 </resources>

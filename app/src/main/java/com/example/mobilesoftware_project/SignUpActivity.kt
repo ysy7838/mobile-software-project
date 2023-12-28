@@ -1,6 +1,5 @@
 package com.example.mobilesoftware_project
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -8,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobilesoftware_project.databinding.PageSignupBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -30,7 +28,12 @@ class SignupActivity : AppCompatActivity() {
         binding.SignupButton.setOnClickListener {
             val email = binding.SignupEditID.text.toString()
             val password = binding.SignupEditPW.text.toString()
-            createAccount(email, password)
+
+            if (email != "" && password != "") {
+                isRegularEmail(email, password)
+            } else {
+                Toast.makeText(this, R.string.LoginNeedMore, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -39,24 +42,12 @@ class SignupActivity : AppCompatActivity() {
         auth?.createUserWithEmailAndPassword(email, password)
             ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "회원가입에 성공했습니다!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.SignUpSuccess, Toast.LENGTH_SHORT).show()
                     finish() // 가입창 종료
-                } else if (task.exception?.message.isNullOrEmpty()) {
-                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
-                } else{
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(this, "이미 존재하는 계정이거나, 회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, R.string.SignUpFail, Toast.LENGTH_SHORT).show()
                 }
             }
-    }
-
-
-    private fun goToMainActivity(user: FirebaseUser?) {
-        //Firebase에 등록된 계정일 경우에만 메인 화면으로 이동
-        if (user != null) {
-            startActivity(Intent(this, PageOneActivity::class.java))
-            finish()
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {       // 툴바에 있는 게 선택 되었을 때
@@ -71,7 +62,12 @@ class SignupActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    companion object {
-        private const val TAG = "EmailPassword"
+    private fun isRegularEmail(email: String, password: String) {
+        val pattern = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        if (pattern) {
+            createAccount(email, password)
+        } else {
+            Toast.makeText(this, R.string.SignUpEmail, Toast.LENGTH_SHORT).show()
+        }
     }
 }
