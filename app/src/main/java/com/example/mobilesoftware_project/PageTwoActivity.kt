@@ -123,7 +123,7 @@ class PageTwoActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1000) {
+        if (resultCode == 1000) {
             val filename = intent.getStringExtra("filename")
 
             val afterIntent = Intent(this, PageThreetoSixActivity::class.java)
